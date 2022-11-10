@@ -95,6 +95,10 @@ void update_score(int player, int score){
 
 }
 
+void update_board(){
+
+}
+
 
 int main(){
     input_board_dimensions();
@@ -108,6 +112,7 @@ int main(){
             ask_for_coordinates();
             place_penguin(x, y);
             update_score(current_player, score);
+            update_board();
             change_current_player();
         } else {
             counter++;
@@ -124,6 +129,7 @@ int main(){
             ask_for_coordinates();
             move_penguin(x_penguin, y_penguin, x, y);
             update_score(current_player, score);
+            update_board();
             change_current_player();
         } else {
             change_current_player();
