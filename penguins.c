@@ -97,4 +97,45 @@ int main(){
 
     // movement phase:
     // WIP
+
+int check_if_at_least_one_player_has_penguins_to_move(){
 }
+void ask_about_ability_to_move(){ 
+if (check_if_at_least_one_player_has_penguins_to_move()){
+}
+else{ 
+printf("the end”);
+}
+}
+
+int can_current_player_make_move(){
+    }
+void ask_about_ability_to_move_current_player()
+{if (can_current_player_make_move()){}
+else {
+change_current_player;
+}
+}
+
+while(can_current_player_make_move()) 
+show_board();{
+void change_penguin(){}
+
+int is_chosen_penguin_blocked(){}
+
+void chosen_penguin(){
+if ( is_chosen_penguin_blocked()){}
+else{
+change_penguin;}
+}
+
+int are_coordinates_move_valid(){}
+    void  ask_for_coordinates_move (){
+       } 
+      while(are_coordinates_valid()){
+       void place_chosen_penguin(){};
+       update_score();
+    void remove_collected_fishes_from_board(){};
+       change_current_player();
+}
+}// WIP
