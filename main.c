@@ -73,7 +73,7 @@ void ask_for_coordinates(){
 int check_if_current_players_penguins_can_move(){
 
 } // returns 1 or 0
-// penguin
+// player
 
 void ask_for_penguin_coordinates(){
 
