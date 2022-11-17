@@ -1,5 +1,3 @@
-#include "board.c"
-
 void input_board_dimensions() ;
 /*function,which asked players for board dimensions(lenght and width)*/
 

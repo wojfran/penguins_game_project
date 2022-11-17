@@ -1,3 +1,6 @@
+#ifndef PLAYER_H
+#define PLAYER_H
+
 struct Player {
     int players, counter, current_player = 1;
 };
@@ -31,3 +34,5 @@ void update_score(int player, int score);
 /*
  Function which updates score for each particular player.
  */
+
+#endif

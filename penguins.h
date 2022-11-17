@@ -1,3 +1,6 @@
+#ifndef PENGUINS_H
+#define PENGUINS_H
+
 struct Penguin {
     int x, y;
 };
@@ -30,3 +33,5 @@ int can_any_penguins_be_placed();
 Used in the placement phase, checks if any player still can place a penguin
 according to the input penguin number
 */
+
+#endif

@@ -23,12 +23,13 @@ int main(){
         if (check_if_current_player_has_penguins_in_hand() && check_if_space_on_the_board()){
             show_board();
             ask_for_coordinates();
+            struct Penguin penguin1;
             place_penguin(x, y);
             update_score(current_player, score);
             update_board();
-            change_current_player();
+            change_current_player(current_player);
         } else {
-            change_current_player();
+            change_current_player(current_player);
         }
     }
 
@@ -39,12 +40,12 @@ int main(){
             show_board();
             ask_for_penguin_coordinates();
             ask_for_coordinates();
-            move_penguin(x_penguin, y_penguin, x, y);
+            move_penguin(penguin1, x, y);
             update_score(current_player, score);
             update_board();
-            change_current_player();
+            change_current_player(current_player);
         } else {
-            change_current_player();
+            change_current_player(current_player);
         }
     }
 }
