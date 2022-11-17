@@ -1,9 +1,9 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-struct Player {
-    int players, counter, current_player = 1;
-};
+typedef struct Player {
+    int players, counter, current_player;
+} Player;
 /*
  Structure Player holds three integers, players which has information about number of
  players, current_player which is signifying the current player and counter which counts the inability of players to

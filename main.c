@@ -12,6 +12,7 @@ int current_player = 1; //integer signifying the current player
 int score; // keeps score
 int counter; // used to count the inability to make a move,
              // once it is equal the number of players the phase is finished
+struct Penguin penguin1;
 
 int main(){
     input_board_dimensions();
@@ -23,8 +24,7 @@ int main(){
         if (check_if_current_player_has_penguins_in_hand() && check_if_space_on_the_board()){
             show_board();
             ask_for_coordinates();
-            struct Penguin penguin1;
-            place_penguin(x, y);
+            place_penguin(penguin1, x, y);
             update_score(current_player, score);
             update_board();
             change_current_player(current_player);

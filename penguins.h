@@ -1,9 +1,9 @@
 #ifndef PENGUINS_H
 #define PENGUINS_H
 
-struct Penguin {
+typedef struct Penguin {
     int x, y;
-};
+} Penguin;
 /*
 Structure penguin, it holds three integers, the first two, x and y 
 simply describe the position of the penguin on the board.
