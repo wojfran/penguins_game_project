@@ -16,12 +16,10 @@ int counter; // used to count the inability to make a move,
 int main(){
     set_board_dimensions(&x, &y);
     printf("\nThose are the global x and y values:\n%d\n%d\n", x, y);
-    printf("\nI am here");
     
     int** board = allocate_memory_for_board(x, y);
     generate_board(board);
 
-    printf("\nI am here\n");
     display_board(board);
     free_board_memory(board, x);
 }
