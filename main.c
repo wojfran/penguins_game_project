@@ -7,7 +7,8 @@
 
 int x, y; // board dimensions, later used to store input coordinates
 int x_penguin, y_penguin; // storage for chosen penguin coordinates
-int players; // numeber of players
+int players; // number of players
+int penguins; // number of penguins
 int current_player = 1; //integer signifying the current player
 int score; // keeps score
 int counter; // used to count the inability to make a move,

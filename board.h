@@ -1,11 +1,16 @@
-void input_board_dimensions() ;
-/*function,which asked players for board dimensions(lenght and width)*/
+extern int x, y;
 
-void generate_board();
+int** allocate_memory_for_board(int x, int y);
+/* this function allocates memory for a board based on the input x an y parameters*/
+
+void generate_board(int** board);
 /* this function creates a board with given input*/
 
 void display_board();
 /*function for displaying the board*/
+
+void free_board_memory(int** board, int x);
+
 int check_if_space_on_the_board();
 /*used in the placement phase.Checks if there any space on the board
  for penguins,what the players have not yet placed*/
