@@ -4,7 +4,7 @@ void set_board_dimensions(int* x, int* y);
 int check_if_input_is_correct();
  // this function checks the written input
 
-void input_number_of_players_and_penguins();
+void set_number_of_players_and_penguins();
  // used for determining numbers of players and penguins
 
 int are_coordinates_valid();

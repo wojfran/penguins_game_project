@@ -2,9 +2,10 @@
 #define PENGUINS_H
 #include <stdio.h>
 #include <stdlib.h>
+extern int player_number, penguins;
 
 typedef struct Penguin {
-    int x, y;
+    int x, y, flag;
 } Penguin;
 /*
 Structure penguin, it holds three integers, the first two, x and y 
@@ -24,16 +25,10 @@ It should create a penguin object at the given coordinates if they are valid
 ie. if they exist on the board and if a penguin can be placed there
 */
 
-int can_any_penguins_move();
+int can_any_penguins_move(){};
 /*
 Checks if any of the created penguins objects has a tile next to them to 
 which it can move
-*/
-
-int can_any_penguins_be_placed();
-/*
-Used in the placement phase, checks if any player still can place a penguin
-according to the input penguin number
 */
 
 #endif

@@ -2,7 +2,7 @@
 #define PENGUINS_H
 
 typedef struct Penguin {
-    int x, y;
+    int x, y, flag;
 } Penguin;
 /*
 Structure penguin, it holds three integers, the first two, x and y 
@@ -27,11 +27,4 @@ int can_any_penguins_move();
 Checks if any of the created penguins objects has a tile next to them to 
 which it can move
 */
-
-int can_any_penguins_be_placed();
-/*
-Used in the placement phase, checks if any player still can place a penguin
-according to the input penguin number
-*/
-
 #endif

@@ -1,51 +1,50 @@
 #include <stdio.h>
 #include <stdlib.h>
-extern int players, penguins;
+#include <ctype.h>
+extern int player_number, penguins;
 
 void set_board_dimensions(int* x, int* y){
-    char z, o = NULL;
-    while (isdigit(z) == 0){
-        printf("Please enter the X dimension of the board, use a integer\n");
-        z = getchar();
-        *x = z - '0';
-        o = getchar();
-    }
+    char* z = malloc(3*sizeof(char));
 
-    z = NULL;
-    while (isdigit(z) == 0){
+    do {
+        printf("Please enter the X dimension of the board, use a integer\n");
+        fgets(z, 4, stdin);
+        *x = atoi(z);
+    } while (*x == 0);
+
+    do {
         printf("Please enter the Y dimension of the board, use an integer\n");
-        z = getchar();
-        *y = z -'0';
-    }
+        fgets(z, 4, stdin);
+        *y = atoi(z);
+    } while (*y == 0);
+
+    free(z);
 };
 /*function, which asks players for board dimensions(lenght and width)*/
 
 void set_number_of_players_and_penguins() {
-        players, penguins = NULL;
+    char* z = malloc(2*sizeof(char));
 
-    while (isdigit(players) == 0){
+     do {
         printf("Please enter the desired number of players, use a integer\n");
-        scanf("%d\n", players);
-    }
+        fgets(z, 3, stdin);
+        player_number = atoi(z);
+    } while (player_number == 0);
 
-    while (isdigit(penguins) == 0){
+    do {
         printf("Please enter the desired amount of penguins that each player should have, use an integer\n");
-        scanf("%d\n", penguins);
-    }
+        fgets(z, 3, stdin);
+        penguins = atoi(z);
+    } while (penguins == 0);
 } // used for setting the number of players and penguins
 
-int are_coordinates_valid() {
- return 1;
-} // checks if the specified coordinates for a penguin to place are valid
+int are_coordinates_digits() {
+
+} 
+// checks if the specified coordinates for a penguin to place are valid
 
 void ask_for_coordinates(){
 
-
-    if (are_coordinates_valid()){
-
-    } else {
-
-    }
 } // this function lets user to enter the coordinates that they want to move
 
 /*
