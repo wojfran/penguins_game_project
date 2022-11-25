@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "penguins.h"
-extern int player_number, penguins;
+extern int player_number, penguins, current_player;
 
 typedef struct Player {
     int score;
@@ -49,7 +49,11 @@ void deallocate_players(Player* players, int player_number) {
     free(players);
 };
 
-void change_current_player(int current_player);
+void change_current_player(){
+    if (current_player == player_number) {
+        current_player = 1;
+    } else current_player++;
+};
 /*
 Function that changes current player after his move.
  */
@@ -59,7 +63,12 @@ int check_if_current_player_has_penguins_in_hand();
  Checks if current_player - which is equal to 1, has any penguins in hand; outputs 1 or 0.
  */
 
-int check_if_current_players_penguins_can_move(int counter);
+int check_if_current_players_penguins_can_be_placed(Player playa) {
+    int size = sizeof(playa.pingu)/sizeof(playa.pingu[0]);
+    for (int i = 0; i < penguins; i++) {
+        if (playa.pingu[i].flag == 1) return 1;
+    }
+};
 /*
 This function checks if player's penguins have ability to move; outputs 1 or 0.
  */

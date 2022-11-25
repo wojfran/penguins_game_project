@@ -1,22 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-extern int player_number, penguins;
+#include "player.h"
+extern int x, y, player_number, penguins, current_player;
 
-void set_board_dimensions(int* x, int* y){
+void set_board_dimensions(){
     char* z = malloc(3*sizeof(char));
 
     do {
         printf("Please enter the X dimension of the board, use a integer\n");
         fgets(z, 4, stdin);
-        *x = atoi(z);
-    } while (*x == 0);
+        x = atoi(z);
+    } while (x == 0);
 
     do {
         printf("Please enter the Y dimension of the board, use an integer\n");
         fgets(z, 4, stdin);
-        *y = atoi(z);
-    } while (*y == 0);
+        y = atoi(z);
+    } while (y == 0);
 
     free(z);
 };
@@ -43,8 +44,23 @@ int are_coordinates_digits() {
 } 
 // checks if the specified coordinates for a penguin to place are valid
 
-void ask_for_coordinates(){
+void ask_for_coordinates_to_place_penguin(Player playa){
+    printf("Where do you wish to place your penguin Player %d? Please enter integere coordinates:\n", current_player);
+    char* z = malloc(3*sizeof(char));
 
+    do {
+        printf("Please enter the X dimension of the board, use a integer\n");
+        fgets(z, 4, stdin);
+        x = atoi(z);
+    } while (x == 0);
+
+    do {
+        printf("Please enter the Y dimension of the board, use an integer\n");
+        fgets(z, 4, stdin);
+        y = atoi(z);
+    } while (y == 0);
+
+    free(z);
 } // this function lets user to enter the coordinates that they want to move
 
 /*

@@ -6,17 +6,17 @@ int** allocate_memory_for_board(int x, int y) {
     int** board = NULL;
     int i;
 
-    board = (int**) malloc(x * sizeof(int*));
+    board = (int**) malloc(y * sizeof(int*));
 
     if (board == NULL) {
         printf("Unable to allocate memory for rows:(\n");
         return -1;
     }
 
-    for (int i = 0; i < x; i++) {
-        board[i] = (int*) malloc(y * sizeof(int));
+    for (int i = 0; i < y; i++) {
+        board[i] = (int*) malloc(x * sizeof(int));
         if (board[i] == NULL) {
-            free_board_memory(board, x);
+            free_board_memory(board, y);
             printf("Unable to allocate memory for columns:(\n");
             return -1;
         }
@@ -34,8 +34,8 @@ rows.
 void generate_board(int** board){
     int i, j;
     srand(time(0));
-    for(i = 0; i < x; i++){
-        for (j = 0; j < y; j++){
+    for(i = 0; i < y; i++){
+        for (j = 0; j < x; j++){
             board[i][j] = rand() % 3 + 1;
         }
     }
@@ -48,8 +48,8 @@ array of integers (int** board) as its argument and fills it with a random assor
 
 void display_board(int** board){
     int i, j;
-    for(i = 0; i < x; i++){
-        for (j = 0; j < y; j++){
+    for(i = 0; i < y; i++){
+        for (j = 0; j < x; j++){
             printf(" %d ", board[i][j]);
         }
         printf("\n");
@@ -63,7 +63,7 @@ char is printed and a new row begins. It takes an alread allocated 2d dynamic ar
 
 void free_board_memory(int** board, int x){
     int i;
-    for(int i = 0; i < x; i++){
+    for(int i = 0; i < y; i++){
         free(board[i]);
     }
     free(board);
