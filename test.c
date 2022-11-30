@@ -20,10 +20,11 @@ int counter; // used to count the inability to make a move,
 
 int main(){
     // input phase
+    system("clear");
     set_board_dimensions();
     int** board = allocate_memory_for_board(columns, rows);
     generate_board(board);
-    display_board(board);
+    //display_board(board);
 
     set_number_of_players_and_penguins();
     printf("\nThose are the global players and penguins values:\n%d\n%d\n", player_number, penguins);
@@ -33,6 +34,7 @@ int main(){
     current_player = 1;
     while(can_any_penguins_be_placed(players)){
         if(check_if_current_players_penguins_can_be_placed(players[current_player-1])){
+            system("clear");
             display_board(board);
             ask_for_coordinates_to_place_penguin(players[current_player-1]);
             place_penguin(players[current_player-1], board);

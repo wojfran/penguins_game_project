@@ -19,6 +19,7 @@ void set_board_dimensions(){
         rows = atoi(z);
     } while (rows == 0);
 
+    system("clear");
     free(z);
 };
 /*function, which asks players for board dimensions(lenght and width)*/
@@ -37,6 +38,8 @@ void set_number_of_players_and_penguins() {
         fgets(z, 3, stdin);
         penguins = atoi(z);
     } while (penguins == 0);
+
+    system("clear");
 } // used for setting the number of players and penguins
 
 int are_coordinates_digits() {
@@ -60,6 +63,7 @@ void ask_for_coordinates_to_place_penguin(Player playa){
         y = atoi(z);
     } while (y == 0);
 
+    system("clear");
     free(z);
 } // this function lets user to enter the coordinates that they want to move
 
@@ -73,6 +77,7 @@ void ask_for_penguin_id(Player playa){
         current_penguin = atoi(z);
     } while (x == 0 || x > penguins || x < 1);
 
+    system("clear");
     free(z);
 }
 
