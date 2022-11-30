@@ -102,11 +102,11 @@ void ask_for_penguin_coordinates(Player playa, int** board){
 } // it supposed to let user to specify coordinates where they want to move their penguins
 
 int are_coordinates_valid(int** board, Player playa, int x, int y){
-    int penguin_index = (board[x][y]/100);
-    int player_index = (board[x][y]%10);
+    int penguin_index = (board[y][x]/100);
+    int player_index = (board[y][x]%10);
 
     if (playa.index != player_index){
-        printf("wrong player!\n");
+        printf("wrong player!");
         return 1;
     } else return 0;
 }
