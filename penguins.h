@@ -10,9 +10,4 @@ Structure penguin, it holds three integers, the first two, x and y
 simply describe the position of the penguin on the board.
 */
 
-int can_any_penguins_move();
-/*
-Checks if any of the created penguins objects has a tile next to them to 
-which it can move
-*/
 #endif

@@ -10,14 +10,26 @@ void place_penguin(Player playa, int** board){
         if (playa.pingu[i].flag == 1){
             playa.score+=board[y-1][x-1];
             board[y-1][x-1] = playa.index + 100*(i+1);
-            playa.pingu[i].x = x;
-            playa.pingu[i].y = y;
+            playa.pingu[i].x = x-1;
+            playa.pingu[i].y = y-1;
             playa.pingu[i].flag = 0;
             break;
         }
     }
 }
 
-void move_penguin(int x_penguin, int y_penguin, int x, int y){
+void move_penguin(int** board, Player playa, int x_penguin, int y_penguin, int x, int y){
+    int penguin_index = (board[x_penguin][y_penguin]/100);
+    int player_index = (board[x_penguin][y_penguin]%10);
 
+    if (playa.index != player_index){
+        printf("wrong player! dork");
+        printf("%d\n%d", playa.index, player_index);
+    } else {
+        playa.pingu[penguin_index].x=x-1;
+        playa.pingu[penguin_index].y=y-1;
+        playa.score += board[x-1][y-1];
+        board[x-1][y-1] = playa.index + 100*(penguin_index);
+        board[x_penguin][y_penguin] = 0;
+    }
 }

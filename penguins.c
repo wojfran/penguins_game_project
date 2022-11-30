@@ -16,10 +16,4 @@ is not able to move. Once this happens the flag gets turned back to 1
 and the penguin is out of the game.
 */
 
-int can_any_penguins_move(){};
-/*
-Checks if any of the created penguins objects has a tile next to them to 
-which it can move
-*/
-
 #endif

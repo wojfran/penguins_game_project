@@ -23,13 +23,6 @@ int** allocate_memory_for_board(int columns, int rows) {
     }
     return board;    
 };
-/* 
-This function allocates memory for a dynamicaly allocated 2d array of integers which is the
-board for the purposes of the game. It takes two integers, x and y, as its arguments. They
-denote the dimensions of the board that will be created. First the function allocates memory 
-for the "columns" of the board and then it iterates through them to allocate memory for the 
-rows.
-*/
 
 void generate_board(int** board){
     int i, j;
@@ -40,11 +33,6 @@ void generate_board(int** board){
         }
     }
 };
-/*
-This function generates the board for the game. It takes an alread allocated 2d dynamic
-array of integers (int** board) as its argument and fills it with a random assortment of 
-1, 2 or 3 signifying the amount of fish on the tile.
-*/
 
 void display_board(int** board){
     int i, j;
@@ -77,11 +65,6 @@ void display_board(int** board){
         printf("\n");
     }
 };
-/*
-This function displays the board by printing each row in one line, when the row ends a newline
-char is printed and a new row begins. It takes an alread allocated 2d dynamic array of integers 
-(int** board) as its argument.
-*/
 
 void free_board_memory(int** board, int x){
     int i;
@@ -90,10 +73,3 @@ void free_board_memory(int** board, int x){
     }
     free(board);
 };
-
-int check_if_space_on_the_board();
-/*used in the placement phase.Checks if there any space on the board
- for penguins,what the players have not yet placed*/
-
-void update_board();
-/*it should show all board changes that occur during the game*/

@@ -35,7 +35,7 @@ Player create_player(int penguins, int index){
 Player* generate_players(int player_number, int penguins) {
     Player* players;
     players = malloc(player_number * sizeof(Player));
-    int index = 11;
+    int index = 1;
 
     for (int i = 0;i < player_number; i++) {
         players[i] = create_player(penguins, (index+i));
@@ -98,5 +98,15 @@ int can_any_penguins_be_placed(Player* playa) {
 Checks if any of the created penguins objects has a tile next to them to 
 which it can move
 */
+
+int can_any_penguins_move(Player* playa, int** board){
+    for (int i = 0; i < player_number; i++){
+        for (int j = 0; j < penguins; j++){
+            if (playa[i].pingu[j].flag == 0) return 1;
+        }
+    }
+
+    return 0;
+};
 
 #endif

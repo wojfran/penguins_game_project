@@ -51,4 +51,9 @@ Used in the placement phase, checks if any player still can place a penguin
 according to the input penguin number
 */
 
+int can_any_penguins_move(Player* playa, int** board);
+/*
+Checks if any of the created penguins objects has a tile next to them to 
+which it can move
+*/
 #endif
