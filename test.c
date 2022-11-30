@@ -24,7 +24,7 @@ int main(){
     set_board_dimensions();
     int** board = allocate_memory_for_board(columns, rows);
     generate_board(board);
-    //display_board(board);
+    display_board(board);
 
     set_number_of_players_and_penguins();
     printf("\nThose are the global players and penguins values:\n%d\n%d\n", player_number, penguins);
@@ -43,6 +43,8 @@ int main(){
         }
         change_current_player();
     }
+
+
 
     display_board(board);
     printf("succesfful exit");

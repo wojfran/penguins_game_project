@@ -5,3 +5,5 @@
 extern int player_number, penguins, x, y;
 
 void place_penguin(Player playa, int** board);
+
+void move_penguin(int x_penguin, int y_penguin, int x, int y);

@@ -48,16 +48,34 @@ array of integers (int** board) as its argument and fills it with a random assor
 
 void display_board(int** board){
     int i, j;
-    printf("\n--------------------------\n");
+
+    printf("    ");
+    for(i = 0; i < columns; i++){
+        if(i>9) {
+            printf("  %d  ", i+1);
+        } else printf("   %d  ", i+1);
+    }
+    printf("\n");
+    printf("     ");
+    for(i = 0; i < columns; i++){
+        printf("------");
+    }
+    printf("\n");
+
+
     for(i = 0; i < rows; i++){
+        if (i+1 > 9) {
+            printf(" %d |", i+1);
+        } else printf("  %d |", i+1);
         for (j = 0; j < columns; j++){
             if(board[i][j] < 10) {
-                printf(" %d ", board[i][j]);
-            } else printf(" P%d", (board[i][j]-10));
+                printf("  %d  |", board[i][j]);
+            } else {
+                printf(" %dP%d |", (board[i][j]%10), (board[i][j]/100));
+            }
         }
         printf("\n");
     }
-    printf("--------------------------\n");
 };
 /*
 This function displays the board by printing each row in one line, when the row ends a newline
