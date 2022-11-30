@@ -62,7 +62,7 @@ void display_board(int** board){
 /*
 This function displays the board by printing each row in one line, when the row ends a newline
 char is printed and a new row begins. It takes an alread allocated 2d dynamic array of integers 
-(int** board) as its argument.
+(int* board) as its argument.
 */
 
 void free_board_memory(int** board, int x){
