@@ -52,6 +52,7 @@ int main(){
         ask_for_penguin_coordinates(players[current_player-1], board);
         ask_for_coordinates_to_place_penguin(players[current_player-1]);
         move_penguin(board, players[current_player-1], x_penguin, y_penguin, x, y);
+        change_current_player();
     }
     //move_penguin(board, players[0],0,0,4,4);
 
