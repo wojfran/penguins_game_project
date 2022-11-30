@@ -53,7 +53,7 @@ void display_board(int** board){
         for (j = 0; j < columns; j++){
             if(board[i][j] < 10) {
                 printf(" %d ", board[i][j]);
-            } else printf(" %d", board[i][j]);
+            } else printf(" P%d", (board[i][j]-10));
         }
         printf("\n");
     }

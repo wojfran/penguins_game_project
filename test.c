@@ -21,8 +21,6 @@ int counter; // used to count the inability to make a move,
 int main(){
     // input phase
     set_board_dimensions();
-    //printf("\nThose are the global x and y values:\n%d\n%d\n", x, y);
-    //printf("\nThose are the global columns and rows values:\n%d\n%d\n", columns, rows);
     int** board = allocate_memory_for_board(columns, rows);
     generate_board(board);
     display_board(board);
@@ -36,20 +34,16 @@ int main(){
     while(can_any_penguins_be_placed(players)){
         if(check_if_current_players_penguins_can_be_placed(players[current_player-1])){
             display_board(board);
-            //printf("\n%d\n", current_player);
             ask_for_coordinates_to_place_penguin(players[current_player-1]);
             place_penguin(players[current_player-1], board);
-            //printf("\nThose are the global x and y values:\n%d\n%d\n", x, y);
-            display_board(board);
-            //current_player = 2;
-            //change_current_player();
         } else {
             printf("This should never appear if can any penguins be placed works correctly");
-            //change_current_player();
         }
         change_current_player();
     }
 
+    display_board(board);
+    printf("succesfful exit");
     deallocate_players(players, player_number);
     free_board_memory(board, x);
 }

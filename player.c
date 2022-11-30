@@ -35,7 +35,7 @@ Player create_player(int penguins, int index){
 Player* generate_players(int player_number, int penguins) {
     Player* players;
     players = malloc(player_number * sizeof(Player));
-    int index = 10;
+    int index = 11;
 
     for (int i = 0;i < player_number; i++) {
         players[i] = create_player(penguins, (index+i));
