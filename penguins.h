@@ -1,5 +1,6 @@
 #ifndef PENGUINS_H
 #define PENGUINS_H
+extern int player_number, penguins, x, y;
 
 typedef struct Penguin {
     int x, y, flag;
@@ -15,9 +16,9 @@ Function that moves the penguin from the coordinates in which the chosen
 penguin object is currently on to x and y coordiates. It should check if 
 the penguin can move to those coordinates 
 */
-
-void place_penguin(Penguin penguin, int x, int y);
 /*
+void place_penguin(Player playa, int** board);
+
 It should create a penguin object at the given coordinates if they are valid
 ie. if they exist on the board and if a penguin can be placed there
 */

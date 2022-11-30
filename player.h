@@ -1,9 +1,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "penguins.h"
-extern int player_number, penguins;
+extern int player_number, penguins, current_player;
 
 typedef struct Player {
+    int index;
     int score;
     Penguin* pingu;
 } Player;

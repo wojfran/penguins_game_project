@@ -6,6 +6,7 @@
 extern int player_number, penguins, current_player;
 
 typedef struct Player {
+    int index;
     int score;
     Penguin* pingu;
 } Player;
@@ -15,11 +16,11 @@ typedef struct Player {
  make a move, once it is equal to number of all players the game ends.
  */
 
-Player create_player(int penguins){
+Player create_player(int penguins, int index){
     Player player;
 
     player.score = 0;
-
+    player.index = index;
     player.pingu = malloc(penguins * sizeof(Penguin));
 
     for (int i = 0; i < penguins; i++) {
@@ -34,9 +35,10 @@ Player create_player(int penguins){
 Player* generate_players(int player_number, int penguins) {
     Player* players;
     players = malloc(player_number * sizeof(Player));
+    int index = 10;
 
     for (int i = 0;i < player_number; i++) {
-        players[i] = create_player(penguins);
+        players[i] = create_player(penguins, (index+i));
     }
 
     return players;

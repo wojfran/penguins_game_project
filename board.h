@@ -1,6 +1,6 @@
-extern int x, y;
+extern int columns, rows;
 
-int** allocate_memory_for_board(int x, int y);
+int** allocate_memory_for_board(int columns, int rows);
 /* this function allocates memory for a board based on the input x an y parameters*/
 
 void generate_board(int** board);

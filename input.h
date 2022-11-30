@@ -17,3 +17,5 @@ void ask_for_coordinates_to_place_penguin(Player playa);
 
 void ask_for_penguin_coordinates();
  // it supposed to let user to specify coordinates where they want to move their penguins
+
+void ask_for_penguin_id(Player playa);
