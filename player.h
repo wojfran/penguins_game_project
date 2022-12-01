@@ -15,11 +15,13 @@ typedef struct Player {
  */
 
 Player create_player(int penguins);
+/* Creates players to be used on the board. */
 
 Player* generate_players(int players, int penguins);
+/* Function generate_players allocates dynamically memory for the players and generates them. */
 
 void deallocate_players(Player* players, int player_number);
-
+/*This function deallocates memory of before allocated players. */
 void change_current_player();
 /*
 Function that changes current player after his move.
