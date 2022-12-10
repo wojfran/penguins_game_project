@@ -37,7 +37,7 @@ int main(){
         if(check_if_current_players_penguins_can_be_placed(players[current_player-1])){
             system("clear");
             display_board(board);
-            ask_for_coordinates_to_place_penguin(players[current_player-1]);
+            ask_for_coordinates_to_place_penguin(players[current_player-1], board);
             place_penguin(players[current_player-1], board);
         } else {
             printf("This should never appear if can any penguins be placed works correctly");
@@ -47,17 +47,17 @@ int main(){
 
     // moving phase
     while(can_any_penguins_move(players, board)){
-        system("clear");
+        //system("clear");
         display_board(board);
         ask_for_penguin_coordinates(players[current_player-1], board);
-        ask_for_coordinates_to_place_penguin(players[current_player-1]);
+        ask_for_coordinates_to_move_penguin(players[current_player - 1], board);
         move_penguin(board, players[current_player-1], x_penguin, y_penguin, x, y);
         change_current_player();
     }
     //move_penguin(board, players[0],0,0,4,4);
 
     display_board(board);
-    printf("succesfful exit");
+    printf("\nThe game has finished!\n");
     deallocate_players(players, player_number);
     free_board_memory(board, x);
 }

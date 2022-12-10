@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "player.h"
 #include "penguins.h"
-extern int player_number, penguins, x, y;
+extern int player_number, penguins, x, y, x_penguin, y_penguin;
 
 
 void place_penguin(Player playa, int** board){
@@ -20,16 +20,17 @@ void place_penguin(Player playa, int** board){
 
 void move_penguin(int** board, Player playa, int x_penguin, int y_penguin, int x, int y){
     int penguin_index = (board[y_penguin][x_penguin]/100);
-    int player_index = (board[y_penguin][x_penguin]%10);
+    //int player_index = (board[y_penguin][x_penguin]%10);
 
-    if (playa.index != player_index){
-        printf("wrong player! dork");
-        printf("%d\n%d", playa.index, player_index);
-    } else {
-        playa.pingu[penguin_index].x=x-1;
-        playa.pingu[penguin_index].y=y-1;
-        playa.score += board[y-1][x-1];
-        board[y-1][x-1] = playa.index + 100*(penguin_index);
-        board[y_penguin][x_penguin] = 0;
-    }
+    //printf("\n%d\n", x-1);
+    //printf("\n%d\n", y-1);
+    //printf("\n%d\n", penguin_index);
+    //printf("\n%d\n", player_index);
+    playa.pingu[penguin_index-1].x=x-1;
+    playa.pingu[penguin_index-1].y=y-1;
+    playa.score += board[y-1][x-1];
+    board[y-1][x-1] = playa.index + 100*(penguin_index);
+    board[y_penguin][x_penguin] = 0;
+    system("clear");
 }
+

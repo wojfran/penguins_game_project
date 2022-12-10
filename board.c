@@ -56,7 +56,10 @@ void display_board(int** board){
             printf(" %d |", i+1);
         } else printf("  %d |", i+1);
         for (j = 0; j < columns; j++){
-            if(board[i][j] < 10) {
+            if (board[i][j] == 0) {
+                printf("     |");
+            }
+            else if(board[i][j] < 4) {
                 printf("  %d  |", board[i][j]);
             } else {
                 printf(" %dP%d |", (board[i][j]%10), (board[i][j]/100));

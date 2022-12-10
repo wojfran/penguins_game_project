@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "penguins.h"
-extern int player_number, penguins, current_player;
+extern int player_number, penguins, current_player, rows, columns;
 
 typedef struct Player {
     int index;
@@ -99,14 +99,49 @@ Checks if any of the created penguins objects has a tile next to them to
 which it can move
 */
 
-int can_any_penguins_move(Player* playa, int** board){
-    for (int i = 0; i < player_number; i++){
-        for (int j = 0; j < penguins; j++){
-            if (playa[i].pingu[j].flag == 0) return 1;
+/*
+
+int check_if_penguin_can_move(int** board, int x, int y){
+
+        if (x == 0 && y == 0) {
+            if (board[y+1][x] > 0 || board[y][x+1] > 0) {
+                return 1;
+            }
+        } else if (x == 0 && y == rows - 1) {
+            if (board[y][x+1] > 0 || board[y-1][x] > 0) {
+                return 0;
+            }
+        } else if (x == columns - 1 && y == 0) {
+            if (board[y][x-1] > 0 || board[y+1][x] > 0) {
+                return 1;
+            }
+        } else if (x == columns - 1 && y == rows - 1) {
+            if (board[y][x-1] > 0 || board[y-1][x] > 0) {
+                return 1;
+            }
+        } else if (x == 0) {
+            if (board[y][x+1] > 0 || board[y+1][x] > 0 || board[y-1][x] > 0) {
+                return 1;
+            }
+        } else if (y == 0) {
+            if (board[y][x+1] > 0 || board[y][x-1] > 0 || board[y+1][x] > 0) {          
+                return 1;
+            }
+        } else if (x == columns - 1) {   
+            if (board[y][x-1] > 0 || board[y-1][x] > 0 || board[y+1][x] > 0) {
+                return 1;
+            }
+        } else if (y == rows - 1) {
+            if (board[y-1][x] > 0 || board[y][x-1] > 0 || board[y][x+1] > 0) {
+                return 1;
+            }
+        } else {
+            if (board[y+1][x] > 0 || board[y-1][x] > 0 || board[y][x+1] > 0 || board[y][x-1] > 0) {
+                return 1;
+            } else {
+                return 0;
+            }
         }
-    }
-
-    return 0;
-};
-
+}
+*/
 #endif
