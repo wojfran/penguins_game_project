@@ -76,7 +76,7 @@ int main(int argc, char* argv[]){
                 // and no value was outside of the permitted range
                 if(generate_board_file(input, board)) {
                     printf("Such a board was read:\n");
-                    display_board_raw(board, rows, columns);
+                    display_board_file_format(board, rows, columns);
                 } else return 2;
                 
                 // allocating memory for the players to be generated from file
@@ -92,7 +92,7 @@ int main(int argc, char* argv[]){
                     }
                 } else return 2;
 
-                printf("\nThe current player is players[%d]\nThe Current number of players is: %d\n", current_player, player_number);
+                printf("\n\nThe current player is players[%d]\nThe Current number of players is: %d\n", current_player, player_number);
 
                 if (read_penguins_from_board(board, players)) {
                     printf("\nThe read penguins have the following coordinates: \n");
