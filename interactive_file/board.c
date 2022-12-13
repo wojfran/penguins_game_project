@@ -111,3 +111,4 @@ int read_penguins_from_board(int** board, Player* players) {
     } 
     return 1;
 }
+

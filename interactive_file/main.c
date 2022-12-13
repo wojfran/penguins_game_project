@@ -100,6 +100,7 @@ int main(int argc, char* argv[]){
                 } else return 2;
 
                 
+                
 
                 deallocate_players(players, player_number);     
                 free_board_memory(board, columns);
