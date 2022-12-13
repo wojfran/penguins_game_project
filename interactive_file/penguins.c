@@ -5,7 +5,7 @@
 extern int player_number, penguins, x, y;
 
 typedef struct Penguin {
-    int x, y, flag;
+    int x, y;
 } Penguin;
 /*
 Structure penguin, it holds three integers, the first two, x and y 

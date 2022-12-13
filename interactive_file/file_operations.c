@@ -69,9 +69,18 @@ int generate_players_from_file(FILE* input, Player* players, int size_of_players
         Player storage = read_player(input);
         
         if (storage.index == -1) {
+            if (current_player == -1) {
+                Player me = create_player(penguins, player_name, i, 0);
+                while(!check_for_duplicate_player(me, players, 10)){
+                    me.index++;
+                }
+                current_player = i;
+                players[i] = me;
+                i++;
+            }
             player_number = i;
             return 1;
-        } else if (check_for_duplicate_player(storage, players, 10) == 1){
+        } else if (check_for_duplicate_player(storage, players, 10)){
             if (strcmp(storage.id, player_name) == 0) current_player = i;
             players[i] = storage;
             i++;
@@ -82,10 +91,10 @@ int generate_players_from_file(FILE* input, Player* players, int size_of_players
 int check_for_duplicate_player(Player new, Player* players, int players_size) {
     for (int i = 0; i < players_size; i++) {
         if (strcmp(new.id, players[i].id) == 0) {
-            printf("You cannot have two players of the same id name!\n");
+            printf("\nYou cannot have two players of the same id name!\n");
             return 0;
         } else if (new.index == players[i].index) {
-            printf("You cannot have two players of the same index!\n");
+            printf("\nYou cannot have two players of the same index!\n");
             return 0;
         }
     }

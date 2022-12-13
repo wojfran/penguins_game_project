@@ -27,9 +27,8 @@ Player create_player(int penguins, char id[25], int index, int score){
     player.pingu = malloc(penguins * sizeof(Penguin));
 
     for (int i = 0; i < penguins; i++) {
-        player.pingu[i].flag = 1;
-        player.pingu[i].x = 0;
-        player.pingu[i].y = 0;
+        player.pingu[i].x = -1;
+        player.pingu[i].y = -1;
     }
 
     return player;
@@ -101,5 +100,18 @@ int can_any_penguins_be_placed(Player* playa) {
 Checks if any of the created penguins objects has a tile next to them to 
 which it can move
 */
+
+void print_player_penguins_locations(Player playa) {
+    for (int i = 0; i < penguins; i++) {
+        printf("x: %d, y: %d\n", playa.pingu[i].x, playa.pingu[i].y);
+    }
+}
+
+void print_all_players_penguin_coordinates(Player* players) {
+    for (int i = 0; i < player_number; i++) {
+        printf("The locations of penguins for player with the index: %d is:\n", players[i].index);
+        print_player_penguins_locations(players[i]);
+    }
+}
 
 #endif

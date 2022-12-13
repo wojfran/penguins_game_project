@@ -53,4 +53,8 @@ int can_any_penguins_be_placed(Player* playa);
 Used in the placement phase, checks if any player still can place a penguin
 according to the input penguin number
 */
+
+void print_player_penguins_coordinates(Player playa);
+
+void print_all_players_penguin_coordinates(Player* players);
 #endif

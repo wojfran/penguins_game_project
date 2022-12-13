@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "board.h"
+#include "player.h"
+
+extern int penguins;
 
 int** allocate_memory_for_board(int columns, int rows) {
     int** board = NULL;
@@ -84,4 +87,27 @@ void display_board_raw(int** board, int rows, int columns) {
         }
         printf("\n");
     } 
+}
+
+int read_penguins_from_board(int** board, Player* players) {
+    for(int k = 0; k < player_number; k++) {
+        int penguin_counter = 0;
+        for(int i = 0; i < rows; i++){
+            for (int j = 0; j < columns; j++){
+                if (board[i][j] % 10 > 9 || board[i][j] % 10 < 0) {
+                    printf("One value on the board seems to not fit the format!\n");
+                } else if (board[i][j] % 10 == players[k].index) {
+                    if (penguin_counter == penguins) {
+                        printf("The player with the index %d is cheating! You have too many penguins on the board!\n");
+                        return 0;
+                    } else {
+                        players[k].pingu[penguin_counter].x = j;
+                        players[k].pingu[penguin_counter].y = i;
+                        penguin_counter++;
+                    }                    
+                }
+            }
+        }
+    } 
+    return 1;
 }

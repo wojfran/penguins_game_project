@@ -9,7 +9,7 @@
 #include "command_line.h"
 #include "file_operations.h"
 
-const char* player_name = "walter";
+char* player_name = "gus";
 int x;
 int y; // board dimensions, later used to store input coordinates
 int rows, columns;
@@ -17,14 +17,13 @@ int x_penguin, y_penguin; // storage for chosen penguin coordinates
 int player_number; // number of players
 int penguins; // number of penguins
 int current_penguin = 1;
-int current_player = 1; //integer signifying the current player
+int current_player = -1; //integer signifying the current player
 int score; // keeps score
 int counter; // used to count the inability to make a move,
              // once it is equal the number of players the phase is finished
 
 int main(int argc, char* argv[]){
     system("clear");
-    char* player_id = "walter";
     Player* players;
 
     // checking of any commandline parameters were given
@@ -93,7 +92,13 @@ int main(int argc, char* argv[]){
                     }
                 } else return 2;
 
-                printf("\nThe current player is players[%d]\n", current_player);
+                printf("\nThe current player is players[%d]\nThe Current number of players is: %d\n", current_player, player_number);
+
+                if (read_penguins_from_board(board, players)) {
+                    printf("\nThe read penguins have the following coordinates: \n");
+                    print_all_players_penguin_coordinates(players);
+                } else return 2;
+
                 
 
                 deallocate_players(players, player_number);     

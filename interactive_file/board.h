@@ -1,3 +1,5 @@
+#include "player.h"
+
 extern int columns, rows;
 
 int** allocate_memory_for_board(int columns, int rows);
@@ -30,3 +32,5 @@ for the board.
 */
 
 void display_board_raw(int** board, int rows, int columns);
+
+int read_penguins_from_board(int** board, Player* players);
