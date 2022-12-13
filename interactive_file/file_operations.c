@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "player.h"
 
-extern int rows, columns, penguins;
+extern int rows, columns, penguins, player_number, current_player;
 extern char* player_name;
 
 int read_dimensions(FILE* input) {
@@ -37,28 +37,60 @@ int generate_board_file(FILE* input, int** board) {
     return 1;  
 };
 
-Player read_player_id(FILE* input) {
+Player read_player(FILE* input) {
     char id[20];
     int index;
     int score;
 
-    printf("\nPlayer:\n");
-
+    if (feof(input)) {
+        Player end = create_player(0, "eof", -1, -1);
+        return end;
+    }
+    
+    //printf("\nPlayer:\n");
     fscanf(input, " %19s", id);
-    if (strcmp(id, player_name) == 0) printf("\nThis is us:\n");
-    printf("ID: %s\n", id);
+    //printf("ID: %s\n", id);
     fscanf(input, " %d", &index);
-    printf("Index: %d\n", index);
+    //printf("Index: %d\n", index);
     fscanf(input, "%d", &score);
-    printf("Score: %d\n", score);
-     
-    Player bob = create_player(penguins, index, score);
+    //printf("Score: %d\n", score);
 
-    printf("%d %d", bob.index, bob.score);
+    Player bob = create_player(penguins, id, index, score);
+
+    return bob;
 }
 
+// there needs to be an additional a test implemented
+// as when there are spaces after the score of the player
+// the program malfunctions
+int generate_players_from_file(FILE* input, Player* players, int size_of_players) {
+    int i = 0;
+    do {
+        Player storage = read_player(input);
+        
+        if (storage.index == -1) {
+            player_number = i;
+            return 1;
+        } else if (check_for_duplicate_player(storage, players, 10) == 1){
+            if (strcmp(storage.id, player_name) == 0) current_player = i;
+            players[i] = storage;
+            i++;
+        } else return 0;
+    } while (1);
+}
 
-
+int check_for_duplicate_player(Player new, Player* players, int players_size) {
+    for (int i = 0; i < players_size; i++) {
+        if (strcmp(new.id, players[i].id) == 0) {
+            printf("You cannot have two players of the same id name!\n");
+            return 0;
+        } else if (new.index == players[i].index) {
+            printf("You cannot have two players of the same index!\n");
+            return 0;
+        }
+    }
+    return 1;
+}
 
 /*
                 char buffer[25];

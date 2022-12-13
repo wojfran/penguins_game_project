@@ -9,7 +9,7 @@
 #include "command_line.h"
 #include "file_operations.h"
 
-const char* player_name = "mike";
+const char* player_name = "walter";
 int x;
 int y; // board dimensions, later used to store input coordinates
 int rows, columns;
@@ -25,6 +25,7 @@ int counter; // used to count the inability to make a move,
 int main(int argc, char* argv[]){
     system("clear");
     char* player_id = "walter";
+    Player* players;
 
     // checking of any commandline parameters were given
     if (argc > 1) {
@@ -34,7 +35,6 @@ int main(int argc, char* argv[]){
 
         //selecting appropriate mode
         if (mode == 1) {
-
             // placement mode
             // checking if there is a correct amount of commandline parameters
             if (argc == 5) {
@@ -79,10 +79,24 @@ int main(int argc, char* argv[]){
                     printf("Such a board was read:\n");
                     display_board_raw(board, rows, columns);
                 } else return 2;
+                
+                // allocating memory for the players to be generated from file
+                Player* players = players = malloc(10 * sizeof(Player));
+                
+                // generating players out of file data
+                // as well as checking if they are valid
+                // ie. if there arent't any duplicates
+                if(generate_players_from_file(input, players, 10)) {
+                    printf("The following players were read from file:\n");
+                    for (int i = 0; i < player_number; i++) {
+                        printf("\nPlayer[%d]: id(%s), ind(%d), score(%d)", i, players[i].id, players[i].index, players[i].score);
+                    }
+                } else return 2;
 
-                read_player_id(input);
+                printf("\nThe current player is players[%d]\n", current_player);
+                
 
-                              
+                deallocate_players(players, player_number);     
                 free_board_memory(board, columns);
             } else {
                 printf("Wrong amount of commandline parameters "
