@@ -99,49 +99,4 @@ Checks if any of the created penguins objects has a tile next to them to
 which it can move
 */
 
-/*
-
-int check_if_penguin_can_move(int** board, int x, int y){
-
-        if (x == 0 && y == 0) {
-            if (board[y+1][x] > 0 || board[y][x+1] > 0) {
-                return 1;
-            }
-        } else if (x == 0 && y == rows - 1) {
-            if (board[y][x+1] > 0 || board[y-1][x] > 0) {
-                return 0;
-            }
-        } else if (x == columns - 1 && y == 0) {
-            if (board[y][x-1] > 0 || board[y+1][x] > 0) {
-                return 1;
-            }
-        } else if (x == columns - 1 && y == rows - 1) {
-            if (board[y][x-1] > 0 || board[y-1][x] > 0) {
-                return 1;
-            }
-        } else if (x == 0) {
-            if (board[y][x+1] > 0 || board[y+1][x] > 0 || board[y-1][x] > 0) {
-                return 1;
-            }
-        } else if (y == 0) {
-            if (board[y][x+1] > 0 || board[y][x-1] > 0 || board[y+1][x] > 0) {          
-                return 1;
-            }
-        } else if (x == columns - 1) {   
-            if (board[y][x-1] > 0 || board[y-1][x] > 0 || board[y+1][x] > 0) {
-                return 1;
-            }
-        } else if (y == rows - 1) {
-            if (board[y-1][x] > 0 || board[y][x-1] > 0 || board[y][x+1] > 0) {
-                return 1;
-            }
-        } else {
-            if (board[y+1][x] > 0 || board[y-1][x] > 0 || board[y][x+1] > 0 || board[y][x-1] > 0) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-}
-*/
 #endif

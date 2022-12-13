@@ -59,5 +59,5 @@ int main(){
     display_board(board);
     printf("\nThe game has finished!\n");
     deallocate_players(players, player_number);
-    free_board_memory(board, x);
+    free_board_memory(board, columns);
 }
