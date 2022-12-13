@@ -123,15 +123,16 @@ int check_if_given_dimension_is_ok(int x){
 };
 
 int check_if_ice_has_fish(int** board, int x, int y) {
-    if (board[y-1][x-1] > 0 && board[y-1][x-1] < 4) {
+    if ((board[y-1][x-1] / 10) > 0 && (board[y-1][x-1] / 10) < 4 && (board[y-1][x-1] % 10 == 0)) {
         return 1;
     } else if (board[y-1][x-1] == 0) {
         getchar();
         printf("\nThis ice floe doesn't have any fish silly! Please pick again\n");
         return 0;
-    } else if(board[y-1][x-1] > 3) {
+    } else if(board[y-1][x-1] % 10 != 0) {
         getchar();
         printf("\nThis ice floe is already occupied by a penguin, you can't move here silly! Please pick again\n");
+        return 0;
     }
 }
 

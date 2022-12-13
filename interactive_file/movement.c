@@ -7,12 +7,11 @@ extern int player_number, penguins, x, y, x_penguin, y_penguin;
 
 void place_penguin(Player playa, int** board){
     for(int i = 0; i < penguins; i++){
-        if (playa.pingu[i].flag == 1){
+        if (playa.pingu[i].x = -1){
             playa.score+=board[y-1][x-1];
-            board[y-1][x-1] = playa.index + 100*(i+1);
+            board[y-1][x-1] = playa.index;
             playa.pingu[i].x = x-1;
             playa.pingu[i].y = y-1;
-            playa.pingu[i].flag = 0;
             break;
         }
     }

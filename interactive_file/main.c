@@ -94,12 +94,18 @@ int main(int argc, char* argv[]){
 
                 printf("\n\nThe current player is players[%d]\nThe Current number of players is: %d\n", current_player, player_number);
 
+                // reading penguins from board, assigning them
+                // the values of their coordinates as well as
+                // assigning them to their respective players
                 if (read_penguins_from_board(board, players)) {
                     printf("\nThe read penguins have the following coordinates: \n");
                     print_all_players_penguin_coordinates(players);
                 } else return 2;
 
-                
+                ask_for_coordinates_to_place_penguin(players[current_player], board);
+                place_penguin(players[current_player], board);
+
+                display_board_file_format(board, rows, columns);
                 
 
                 deallocate_players(players, player_number);     

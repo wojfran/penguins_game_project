@@ -113,7 +113,23 @@ int read_penguins_from_board(int** board, Player* players) {
 }
 
 void display_board_file_format(int** board, int rows, int columns) {
+    printf("   ");
+    for(int i = 0; i < columns; i++){
+        if(i>9) {
+            printf("  %d ", i+1);
+        } else printf("  %d ", i+1);
+    }
+    printf("\n");
+    printf("   ");
+    for(int i = 0; i < columns; i++){
+        printf("----");
+    }
+    printf("\n");
+
     for(int i = 0; i < rows; i++){
+        if (i+1 > 9) {
+            printf(" %d |", i+1);
+        } else printf(" %d|", i+1);
         for (int j = 0; j < columns; j++){
             if(board[i][j] >= 10) {
                 printf(" %d ", board[i][j]);
