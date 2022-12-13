@@ -20,6 +20,7 @@ int generate_board_file(FILE* input, int** board) {
         for (int j = 0; j < columns; j++){
             int check = fscanf(input, "%d", &floe_value);
             if (floe_value < 40 && floe_value >= 0) {
+                if ((floe_value % 10 != 0) && (floe_value > 9)) floe_value = floe_value % 10;
                 board[i][j] = floe_value;
             } else {
                 printf("Integer within the wrong range read in the space of the"
@@ -41,6 +42,8 @@ Player read_player(FILE* input) {
     char id[20];
     int index;
     int score;
+    int check;
+    
 
     if (feof(input)) {
         Player end = create_player(0, "eof", -1, -1);
@@ -48,12 +51,18 @@ Player read_player(FILE* input) {
     }
     
     //printf("\nPlayer:\n");
-    fscanf(input, " %19s", id);
+    check = fscanf(input, " %19s", id);
     //printf("ID: %s\n", id);
     fscanf(input, " %d", &index);
     //printf("Index: %d\n", index);
     fscanf(input, "%d", &score);
     //printf("Score: %d\n", score);
+    //printf("Scanf: %d", check);
+
+    if(check < 0) {
+        Player end = create_player(0, "eof", -1, -1);
+        return end;
+    }
 
     Player bob = create_player(penguins, id, index, score);
 
@@ -67,7 +76,6 @@ int generate_players_from_file(FILE* input, Player* players, int size_of_players
     int i = 0;
     do {
         Player storage = read_player(input);
-        
         if (storage.index == -1) {
             if (current_player == -1) {
                 Player me = create_player(penguins, player_name, i, 0);
@@ -77,14 +85,22 @@ int generate_players_from_file(FILE* input, Player* players, int size_of_players
                 current_player = i;
                 players[i] = me;
                 i++;
+                player_number = i;
+                return 1;
             }
             player_number = i;
             return 1;
         } else if (check_for_duplicate_player(storage, players, 10)){
-            if (strcmp(storage.id, player_name) == 0) current_player = i;
+            if (strcmp(storage.id, player_name) == 0) {
+                current_player = i;
+                printf("\n%d\n", i);
+            }
+            
             players[i] = storage;
             i++;
-        } else return 0;
+        } else {
+            return 0;
+        }
     } while (1);
 }
 
@@ -101,28 +117,20 @@ int check_for_duplicate_player(Player new, Player* players, int players_size) {
     return 1;
 }
 
-/*
-                char buffer[25];
+int write_game_state_to_output_file(FILE* output, int** board, Player* players) {
 
-                // preventing the first line to be included in the generation
-                fgets(buffer, sizeof(buffer), input);
-                
-                // reading the values of consecutive ice floes
-                for (int i = 0; i < rows; i++) {
-                    fgets(buffer, sizeof(buffer), input);
+    fprintf(output, "%d %d\n", rows, columns);
 
-                    //printf("%s", buffer);
-                    int column_counter = 0;
-                    char* floe = strtok(buffer, " \n");
-                    //printf("%s", floe);
-                    
-                    while(floe){
-                        int floe_value = atoi(floe);
-                        printf(" %d ", floe_value);
-                        board[i][column_counter] = floe_value;
-                        floe = strtok(NULL, " ");
-                        column_counter++;
-                    }
-                
-                }   
-                */
+    for(int i = 0; i < rows; i++){
+        for (int j = 0; j < columns; j++){
+            if (board[i][j] < 10) {
+                fprintf(output, "0%d ", board[i][j]);
+            } else fprintf(output, "%d ", board[i][j]);
+        }
+        fprintf(output, "\n");
+    }
+
+    for (int i = 0; i < player_number; i++) {
+        fprintf(output, "%s %d %d\n", players[i].id, players[i].index, players[i].score);
+    }
+}

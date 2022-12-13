@@ -5,16 +5,17 @@
 extern int player_number, penguins, x, y, x_penguin, y_penguin;
 
 
-void place_penguin(Player playa, int** board){
+Player place_penguin(Player playa, int** board){
     for(int i = 0; i < penguins; i++){
-        if (playa.pingu[i].x = -1){
-            playa.score+=board[y-1][x-1];
+        if (playa.pingu[i].x == -1){
+            playa.score +=board[y-1][x-1]/10;
             board[y-1][x-1] = playa.index;
             playa.pingu[i].x = x-1;
             playa.pingu[i].y = y-1;
             break;
         }
     }
+    return playa;
 }
 
 void move_penguin(int** board, Player playa, int x_penguin, int y_penguin, int x, int y){

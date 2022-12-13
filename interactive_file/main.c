@@ -94,6 +94,8 @@ int main(int argc, char* argv[]){
 
                 printf("\n\nThe current player is players[%d]\nThe Current number of players is: %d\n", current_player, player_number);
 
+                fclose(input);
+
                 // reading penguins from board, assigning them
                 // the values of their coordinates as well as
                 // assigning them to their respective players
@@ -102,14 +104,40 @@ int main(int argc, char* argv[]){
                     print_all_players_penguin_coordinates(players);
                 } else return 2;
 
-                ask_for_coordinates_to_place_penguin(players[current_player], board);
-                place_penguin(players[current_player], board);
+                // check if the player with our id name has penguins
+                // to be placed and if so ask for coordinates, then
+                // place penguin. if we have already placed our penguins
+                // returns 1
+                if (check_if_current_players_penguins_can_be_placed(players[current_player])){
+                    ask_for_coordinates_to_place_penguin(players[current_player], board);
+                    players[current_player] = place_penguin(players[current_player], board);
+                } else {
+                    printf("We have already placed all our penguins. ");
+                    return 1;
+                }
 
                 display_board_file_format(board, rows, columns);
+                display_board_raw(board, rows, columns);
                 
+                FILE* output;
+                output = fopen(argv[4], "w");
+                
+                // checking if the fopen function was successful
+                // ie. if file could be read
+                if (output == NULL) {
+                    printf("Output board file could not be opened.\n");
+                    return 2;
+                }
+
+                printf("\nThe read penguins have the following coordinates: \n");
+                    print_all_players_penguin_coordinates(players);
+
+
+                write_game_state_to_output_file(output, board, players);
 
                 deallocate_players(players, player_number);     
                 free_board_memory(board, columns);
+                return 0;
             } else {
                 printf("Wrong amount of commandline parameters "
                 "they should be of this format:\n'penguins.exe "

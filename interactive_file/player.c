@@ -70,8 +70,9 @@ int check_if_current_player_has_penguins_in_hand();
 int check_if_current_players_penguins_can_be_placed(Player playa) {
     int size = sizeof(playa.pingu)/sizeof(playa.pingu[0]);
     for (int i = 0; i < penguins; i++) {
-        if (playa.pingu[i].flag == 1) return 1;
+        if (playa.pingu[i].x == -1) return 1;  
     }
+    return 0;
 };
 /*
 This function checks if player's penguins have ability to move; outputs 1 or 0.
