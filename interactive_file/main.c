@@ -43,7 +43,8 @@ int main(int argc, char* argv[]){
 
                 // checking if the amount of penguins is correct
                 if (penguins == -1) {
-                    return 2;
+                    printf("The amount of penguins could not be read.\n");
+                    return 3;
                 } 
 
                 printf("The read amount of penguins is: \n%d\n\n", penguins);
@@ -103,7 +104,7 @@ int main(int argc, char* argv[]){
                     printf("\nThe read penguins have the following coordinates: \n");
                     print_all_players_penguin_coordinates(players);
                     printf("\n");
-                } else return 2;
+                } else return 3;
 
                 // check if the player with our id name has penguins
                 // to be placed and if so ask for coordinates, then
@@ -127,11 +128,12 @@ int main(int argc, char* argv[]){
                 // ie. if file could be read
                 if (output == NULL) {
                     printf("Output board file could not be opened.\n");
-                    return 2;
+                    return 3;
                 }
 
                 write_game_state_to_output_file(output, board, players);
-
+                
+                fclose(output);
                 deallocate_players(players, player_number);     
                 free_board_memory(board, columns);
                 return 0;
@@ -139,7 +141,7 @@ int main(int argc, char* argv[]){
                 printf("Wrong amount of commandline parameters "
                 "they should be of this format:\n'penguins.exe "
                 "phase=placement penguins=3 inputboard.txt outpuboard.txt'");
-                return 2;
+                return 3;
             }
         } else if (mode == 2) {
             if (argc == 4) {
@@ -204,7 +206,7 @@ int main(int argc, char* argv[]){
                     printf("\nThe read penguins have the following coordinates: \n");
                     print_all_players_penguin_coordinates(players);
                     printf("\n");
-                } else return 2;
+                } else return 3;
 
                 // check if the player with our id name has penguins
                 // to be placed and if so ask for coordinates, then
@@ -229,12 +231,13 @@ int main(int argc, char* argv[]){
                 // ie. if file could be read
                 if (output == NULL) {
                     printf("Output board file could not be opened.\n");
-                    return 2;
+                    return 3;
                 }
 
                 write_game_state_to_output_file(output, board, players);
 
-                //deallocate_players(players, player_number);     
+                fclose(output);
+                //deallocate_players(players, 11);     
                 free_board_memory(board, columns);
                 return 0;
             } else {
