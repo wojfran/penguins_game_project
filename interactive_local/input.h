@@ -10,6 +10,7 @@ void ask_for_coordinates_to_place_penguin(Player playa, int** board);
  // this function lets user to enter the coordinates that they want to move
 
 void ask_for_penguin_id(Player playa);
+// this function asks for input id from the player 
 
 void ask_for_penguin_coordinates(Player playa, int** board);
  // it supposed to let user to specify coordinates where they want to move their penguins
