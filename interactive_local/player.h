@@ -39,7 +39,7 @@ This function checks if player's penguins have ability to move; outputs 1 or 0.
 
 int does_penguin_belong_to_current_player();
 /*
-A function that checks if a particular penguin belong to current player; outputs 1 or 0.
+function that checks if a particular penguin belong to current player; outputs 1 or 0.
  */
 
 void update_score(int player, int score);
