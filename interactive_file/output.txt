@@ -2,7 +2,7 @@
 03 04 00 01 
 02 02 10 04 
 20 10 30 03 
-mike 1 0
-walter 2 0
-jessie 3 0
-gus 4 2
+candice 1 0
+chokonma 2 0
+sugma 3 0
+ligma 4 2

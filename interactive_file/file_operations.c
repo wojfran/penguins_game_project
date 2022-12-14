@@ -64,7 +64,8 @@ Player read_player(FILE* input) {
         return end;
     }
 
-    Player bob = create_player(penguins, id, index, score);
+    Player bob = create_player(penguins==-1 ? 10: penguins, id, index, score);
+    
 
     return bob;
 }
@@ -86,14 +87,13 @@ int generate_players_from_file(FILE* input, Player* players, int size_of_players
                 players[i] = me;
                 i++;
                 player_number = i;
-                return 1;
+                return 2;
             }
             player_number = i;
             return 1;
         } else if (check_for_duplicate_player(storage, players, 10)){
             if (strcmp(storage.id, player_name) == 0) {
                 current_player = i;
-                printf("\n%d\n", i);
             }
             
             players[i] = storage;

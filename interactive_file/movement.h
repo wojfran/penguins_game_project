@@ -11,4 +11,4 @@ extern int player_number, penguins, x, y;
 Player place_penguin(Player playa, int** board);
 
 /* Function move_penguin is expected to move the penguin to the right place on a board. */
-void move_penguin(int** board, Player playa, int x_penguin, int y_penguin, int x, int y);
+Player move_penguin(int** board, Player playa, int x_penguin, int y_penguin, int x, int y);

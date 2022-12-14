@@ -18,7 +18,7 @@ Player place_penguin(Player playa, int** board){
     return playa;
 }
 
-void move_penguin(int** board, Player playa, int x_penguin, int y_penguin, int x, int y){
+Player move_penguin(int** board, Player playa, int x_penguin, int y_penguin, int x, int y){
     int penguin_index = (board[y_penguin][x_penguin]/100);
     //int player_index = (board[y_penguin][x_penguin]%10);
 
@@ -29,8 +29,9 @@ void move_penguin(int** board, Player playa, int x_penguin, int y_penguin, int x
     playa.pingu[penguin_index-1].x=x-1;
     playa.pingu[penguin_index-1].y=y-1;
     playa.score += board[y-1][x-1];
-    board[y-1][x-1] = playa.index + 100*(penguin_index);
+    board[y-1][x-1] = playa.index;
     board[y_penguin][x_penguin] = 0;
     system("clear");
+    return playa;
 }
 

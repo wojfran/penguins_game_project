@@ -32,3 +32,5 @@ int check_if_penguin_is_not_flying(int x_penguin, int y_penguin, int x, int y);
 int check_if_penguin_can_move(int** board, int x_penguin, int y_penguin); 
 
 int can_any_penguins_move(Player* playa, int** board);
+
+int check_if_current_players_penguins_can_move(Player playa, int** board);

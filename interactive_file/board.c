@@ -94,11 +94,11 @@ int read_penguins_from_board(int** board, Player* players) {
         int penguin_counter = 0;
         for(int i = 0; i < rows; i++){
             for (int j = 0; j < columns; j++){
-                if (board[i][j] % 10 > 9 || board[i][j] % 10 < 0) {
+                if (board[i][j] > 39 || board[i][j] < 0) {
                     printf("One value on the board seems to not fit the format!\n");
                 } else if (board[i][j] % 10 == players[k].index) {
-                    if (penguin_counter == penguins) {
-                        printf("The player with the index %d is cheating! You have too many penguins on the board!\n");
+                    if (penguin_counter == penguins  && penguins != -1) {
+                        printf("The player with the index %d is cheating! You have too many penguins on the board!\n", players[k].index);
                         return 0;
                     } else {
                         players[k].pingu[penguin_counter].x = j;
@@ -108,6 +108,12 @@ int read_penguins_from_board(int** board, Player* players) {
                 }
             }
         }
+        if (penguins == -1) {
+            penguins = penguin_counter;
+        }
+        if (penguin_counter < penguins) {
+            printf("%s has not placed all of his penguins on the board yet.\n", players[k].id);
+        }        
     } 
     return 1;
 }

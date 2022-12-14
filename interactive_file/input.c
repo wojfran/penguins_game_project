@@ -31,7 +31,7 @@ void set_number_of_players_and_penguins() {
 } // used for setting the number of players and penguins
 
 void ask_for_coordinates_to_place_penguin(Player playa, int** board){
-    printf("\nWhere do you wish to place your penguin Player %d? Please enter integer coordinates:", current_player);
+    printf("\nWhere do you wish to place your penguin %s (%d)? Please enter integer coordinates:", playa.id, playa.index);
 
     do {
         do {
@@ -48,7 +48,7 @@ void ask_for_coordinates_to_place_penguin(Player playa, int** board){
 } // this function lets user to enter the coordinates that they want to move
 
 void ask_for_coordinates_to_move_penguin(Player playa, int** board){
-    printf("\nWhere do you wish to move your penguin Player %d? Please enter integer coordinates:", current_player);
+    printf("\nWhere do you wish to move your penguin %s (%d)? Please enter integer coordinates:", playa.id, playa.index);
 
     do {
         do {
@@ -65,7 +65,7 @@ void ask_for_coordinates_to_move_penguin(Player playa, int** board){
 }
 
 void ask_for_penguin_coordinates(Player playa, int** board){
-    printf("\nWhich penguin do you wish to move Player %d? Please enter integer coordinates:", current_player);
+    printf("\nWhich penguin do you wish to move %s (%d)? Please enter integer coordinates:", playa.id, playa.index);
     do {
         do {
             printf("\nPlease enter the X location of your penguin, use a integer\n");
@@ -82,7 +82,6 @@ void ask_for_penguin_coordinates(Player playa, int** board){
 } // it supposed to let user to specify coordinates where they want to move their penguins
 
 int check_if_penguin_belongs_to_player(int** board, Player playa, int x, int y){
-    int penguin_index = (board[y][x]/100);
     int player_index = (board[y][x]%10);
 
     if (board[y][x] < 4 && board[y][x] > 0) {
@@ -180,120 +179,120 @@ int check_if_penguin_can_move(int** board, int x_penguin, int y_penguin) {
     */ // diagnostic prints
 
     if (x > 1 && x < columns && y > 1 && y < rows) {
-        if (board[y-1][x] > 0 && board[y-1][x] < 4) {
+        if (board[y-1][x] > 0 && (board[y-1][x] % 10) == 0) {
             //printf("d");
             return 1;
-        } else if (board[y][x-1] > 0 && board[y][x-1] < 4) { 
+        } else if (board[y][x-1] > 0 && (board[y][x-1]% 10) == 0) { 
             //printf("s");
             return 1;
-        } else if (board[y-1][x-2] > 0 && board[y-1][x-2] < 4) {
+        } else if (board[y-1][x-2] > 0 && (board[y-1][x-2] % 10) == 0) {
             //printf("a");
             return 1;
-        } else if (board[y-2][x-1] > 0 && board[y-2][x-1] < 4) {
+        } else if (board[y-2][x-1] > 0 && (board[y-2][x-1] % 10) == 0) {
             //printf("w");
             return 1;
         } else {
-            printf("\nThis penguin can't move silly! Please pick a different penguin!\n");
+            printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);
             return 0;
         }
     } else if (x == 1 && y == 1) {
-        if (board[y-1][x] > 0 && board[y-1][x] < 4) {
+        if (board[y-1][x] > 0 && (board[y-1][x] % 10) == 0) {
             //printf("d1");
             return 1;
-        } else if (board[y][x-1] > 0 && board[y][x-1] < 4) { 
+        } else if (board[y][x-1] > 0 && (board[y][x-1] % 10) == 0) { 
             //printf("s1");
             return 1;
         } else {
-            printf("\nThis penguin can't move silly! Please pick a different penguin!\n");
+            printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);
             return 0;
         }
     } else if (x == columns && y == rows) {
-        if (board[y-1][x-2] > 0 && board[y-1][x-2] < 4) {
+        if (board[y-1][x-2] > 0 && (board[y-1][x-2] % 10) == 0) {
             //printf("a2");
             return 1;
-        } else if (board[y-2][x-1] > 0 && board[y-2][x-1] < 4) {
+        } else if (board[y-2][x-1] > 0 && (board[y-2][x-1] % 10) == 0) {
             //printf("w2");
             return 1;
         } else {
-            printf("\nThis penguin can't move silly! Please pick a different penguin!\n");
+            printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);
             return 0;
         }
     } else if (x == 1 && y == rows) {
-        if (board[y-1][x] > 0 && board[y-1][x] < 4) {
+        if (board[y-1][x] > 0 && (board[y-1][x] % 10) == 0) {
             //printf("d3");
             return 1;
-        } else if (board[y-2][x-1] > 0 && board[y-2][x-1] < 4) {
+        } else if (board[y-2][x-1] > 0 && (board[y-2][x-1] % 10) == 0) {
             //printf("w3");
             return 1;
         } else {
-            printf("\nThis penguin can't move silly! Please pick a different penguin!\n");
+            printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);
             return 0;
         }
     } else if (x == columns && y == 1) {
-        if (board[y-1][x-2] > 0 && board[y-1][x-2] < 4) {
+        if (board[y-1][x-2] > 0 && (board[y-1][x-2] % 10) == 0) {
             //printf("a4");
             return 1;
-        } else if (board[y][x-1] > 0 && board[y][x-1] < 4) {
+        } else if (board[y][x-1] > 0 && (board[y][x-1] % 10) == 0) {
             //printf("s4");
             return 1;
         } else {
-            printf("\nThis penguin can't move silly! Please pick a different penguin!\n");
+            printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);
             return 0;
         }
     } else if (x == 1 && y > 1 && y < rows) {
-        if (board[y-2][x-1] > 0 && board[y-2][x-1] < 4) {
-            //printf("w5");
+        if (board[y-2][x-1] > 0 && (board[y-2][x-1] % 10) == 0) {
+            printf("w5");
             return 1;
-        } else if (board[y][x-1] > 0 && board[y][x-1] < 4) {
-            //printf("s5");
+        } else if (board[y][x-1] > 0 && (board[y][x-1] % 10) == 0) {
+            printf("s5");
             return 1;
-        } else if (board[y-1][x] > 0 && board[y-1][x] < 4) {
-            //printf("d5");
+        } else if (board[y-1][x] > 0 && (board[y-1][x] % 10) == 0) {
+            printf("d5");
             return 1;
         } else {
-            printf("\nThis penguin can't move silly! Please pick a different penguin!\n");
+            printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);
             return 0;
         }
     } else if (x == columns && y > 1 && y < rows) {
-        if (board[y-2][x-1] > 0 && board[y-2][x-1] < 4) {
+        if (board[y-2][x-1] > 0 && (board[y-2][x-1] % 10) == 0) {
             //printf("w6");
             return 1;
-        } else if (board[y][x-1] > 0 && board[y][x-1] < 4) {
+        } else if (board[y][x-1] > 0 && (board[y][x-1] % 10) == 0) {
             //printf("s6");
             return 1;
-        } else if (board[y-1][x-2] > 0 && board[y-1][x-2] < 4) {
+        } else if (board[y-1][x-2] > 0 && (board[y-1][x-2] % 10) == 0) {
             //printf("a6");
             return 1;
         } else {
-            printf("\nThis penguin can't move silly! Please pick a different penguin!\n");
+            printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);
             return 0;
         }
     } else if (x > 1 && x < columns && y == 1) {
-        if (board[y-1][x-2] > 0 && board[y-1][x-2] < 4) {
+        if (board[y-1][x-2] > 0 && (board[y-1][x-2] % 10) == 0) {
             //printf("a7");
             return 1;
-        } else if (board[y][x-1] > 0 && board[y][x-1] < 4) {
+        } else if (board[y][x-1] > 0 && (board[y][x-1] % 10) == 0) {
             //printf("s7");
             return 1;
-        } else if (board[y-1][x] > 0 && board[y-1][x] < 4) {
+        } else if (board[y-1][x] > 0 && (board[y-1][x] % 10) == 0) {
             //printf("d7");
             return 1;
         } else {
-            printf("\nThis penguin can't move silly! Please pick a different penguin!\n");
+            printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);
             return 0;
         }
     } else if (x > 1 && x < columns && y == rows) {
-        if (board[y-1][x-2] > 0 && board[y-1][x-2] < 4) {
+        if (board[y-1][x-2] > 0 && (board[y-1][x-2] % 10) == 0) {
             //printf("a7");
             return 1;
-        } else if (board[y-2][x-1] > 0 && board[y-2][x-1] < 4) {
+        } else if (board[y-2][x-1] > 0 && (board[y-2][x-1] % 10) == 0) {
             //printf("w7");
             return 1;
-        } else if (board[y-1][x] > 0 && board[y-1][x] < 4) {
+        } else if (board[y-1][x] > 0 && (board[y-1][x] % 10) == 0) {
             //printf("d7");
             return 1;
         } else {
-            printf("\nThis penguin can't move silly! Please pick a different penguin!\n");
+            printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);
             return 0;
         }
     } else {
@@ -301,6 +300,20 @@ int check_if_penguin_can_move(int** board, int x_penguin, int y_penguin) {
         return 1;
     }
 }; 
+
+int check_if_current_players_penguins_can_move(Player playa, int** board) {
+
+    int check = 0;
+
+    for (int i = 0; i < penguins; i++) {
+        int x = playa.pingu[i].x;
+        int y = playa.pingu[i].y;
+        if(!check_if_penguin_can_move(board, x, y)) check++;
+    }
+
+    if (check == penguins) return 0;
+    else return 1;
+}
 
 int can_any_penguins_move(Player* playa, int** board){
     for (int i = 0; i < player_number; i++){

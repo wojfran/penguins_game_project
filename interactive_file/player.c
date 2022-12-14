@@ -104,7 +104,7 @@ which it can move
 
 void print_player_penguins_locations(Player playa) {
     for (int i = 0; i < penguins; i++) {
-        printf("x: %d, y: %d\n", playa.pingu[i].x, playa.pingu[i].y);
+        printf("x: %d, y: %d\n", playa.pingu[i].x+1, playa.pingu[i].y+1);
     }
 }
 
