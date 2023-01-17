@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include "input.h"
 #include "Player.h"
 extern int x, y, columns, rows, player_number, penguins, current_player, x_penguin, y_penguin;
 
@@ -208,10 +209,8 @@ int check_if_penguin_can_move(int** board, int x_penguin, int y_penguin) {
         }
     } else if (x == columns && y == rows) {
         if (board[y-1][x-2] > 0 && (board[y-1][x-2] % 10) == 0) {
-            //printf("a2");
             return 1;
         } else if (board[y-2][x-1] > 0 && (board[y-2][x-1] % 10) == 0) {
-            //printf("w2");
             return 1;
         } else {
             printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);
@@ -219,10 +218,8 @@ int check_if_penguin_can_move(int** board, int x_penguin, int y_penguin) {
         }
     } else if (x == 1 && y == rows) {
         if (board[y-1][x] > 0 && (board[y-1][x] % 10) == 0) {
-            //printf("d3");
             return 1;
         } else if (board[y-2][x-1] > 0 && (board[y-2][x-1] % 10) == 0) {
-            //printf("w3");
             return 1;
         } else {
             printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);
@@ -230,10 +227,8 @@ int check_if_penguin_can_move(int** board, int x_penguin, int y_penguin) {
         }
     } else if (x == columns && y == 1) {
         if (board[y-1][x-2] > 0 && (board[y-1][x-2] % 10) == 0) {
-            //printf("a4");
             return 1;
         } else if (board[y][x-1] > 0 && (board[y][x-1] % 10) == 0) {
-            //printf("s4");
             return 1;
         } else {
             printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);
@@ -255,13 +250,10 @@ int check_if_penguin_can_move(int** board, int x_penguin, int y_penguin) {
         }
     } else if (x == columns && y > 1 && y < rows) {
         if (board[y-2][x-1] > 0 && (board[y-2][x-1] % 10) == 0) {
-            //printf("w6");
             return 1;
         } else if (board[y][x-1] > 0 && (board[y][x-1] % 10) == 0) {
-            //printf("s6");
             return 1;
         } else if (board[y-1][x-2] > 0 && (board[y-1][x-2] % 10) == 0) {
-            //printf("a6");
             return 1;
         } else {
             printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);
@@ -269,13 +261,10 @@ int check_if_penguin_can_move(int** board, int x_penguin, int y_penguin) {
         }
     } else if (x > 1 && x < columns && y == 1) {
         if (board[y-1][x-2] > 0 && (board[y-1][x-2] % 10) == 0) {
-            //printf("a7");
             return 1;
         } else if (board[y][x-1] > 0 && (board[y][x-1] % 10) == 0) {
-            //printf("s7");
             return 1;
         } else if (board[y-1][x] > 0 && (board[y-1][x] % 10) == 0) {
-            //printf("d7");
             return 1;
         } else {
             printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);
@@ -283,13 +272,10 @@ int check_if_penguin_can_move(int** board, int x_penguin, int y_penguin) {
         }
     } else if (x > 1 && x < columns && y == rows) {
         if (board[y-1][x-2] > 0 && (board[y-1][x-2] % 10) == 0) {
-            //printf("a7");
             return 1;
         } else if (board[y-2][x-1] > 0 && (board[y-2][x-1] % 10) == 0) {
-            //printf("w7");
             return 1;
         } else if (board[y-1][x] > 0 && (board[y-1][x] % 10) == 0) {
-            //printf("d7");
             return 1;
         } else {
             printf("\nPenguin with the coordinates x: %d and y: %d cannot move.\n", x_penguin, y_penguin);

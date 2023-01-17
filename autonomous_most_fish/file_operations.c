@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "file_operations.h"
 #include "player.h"
 
 extern int rows, columns, penguins, player_number, current_player;
@@ -50,14 +51,9 @@ Player read_player(FILE* input) {
         return end;
     }
     
-    //printf("\nPlayer:\n");
     check = fscanf(input, " %19s", id);
-    //printf("ID: %s\n", id);
     fscanf(input, " %d", &index);
-    //printf("Index: %d\n", index);
     fscanf(input, "%d", &score);
-    //printf("Score: %d\n", score);
-    //printf("Scanf: %d", check);
 
     if(check < 0) {
         Player end = create_player(0, "eof", -1, -1);
@@ -70,9 +66,6 @@ Player read_player(FILE* input) {
     return bob;
 }
 
-// there needs to be an additional a test implemented
-// as when there are spaces after the score of the player
-// the program malfunctions
 int generate_players_from_file(FILE* input, Player* players, int size_of_players) {
     int i = 0;
     do {

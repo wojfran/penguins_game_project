@@ -93,7 +93,7 @@ int main(int argc, char* argv[]){
                     }
                 } else return 2;
 
-                printf("\n\nThe current player is players[%d]\nThe number of players is: %d\n", current_player, player_number);
+                printf("\n\nThe current player is player[%d]\nThe number of players is: %d\n\n", current_player, player_number);
 
                 fclose(input);
 

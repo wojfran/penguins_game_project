@@ -10,10 +10,13 @@ typedef struct Player {
     Penguin* pingu;
 } Player;
 /*
- Structure Player holds three integers, players which has information about number of
- players, current_player which is signifying the current player and counter which counts the inability of players to
- make a move, once it is equal to number of all players the game ends.
- */
+Structure representing a player/team taking part in the game. It hold the following attributes:
+    - char id[25], this is the name of the player/team
+    - int index, this is the index of the player/team, no two players/teams can have the same index
+    - int score, self-explanatory, it holds the current score of the player/team
+    - Penguin* pingu, a dynamic array of Penguin structures, representing the penguins
+    belonging to the player, its size is the amount of penguins chosen at the start of the game
+*/
 
 Player create_player(int penguins, char id[25], int index, int score);
 /* Creates players to be used on the board. */
@@ -26,11 +29,6 @@ void deallocate_players(Player* players, int player_number);
 void change_current_player();
 /*
 Function that changes current player after his move.
- */
-
-int check_if_current_player_has_penguins_in_hand();
-/*
- Checks if current_player - which is equal to 1, has any penguins in hand; outputs 1 or 0.
  */
 
 int check_if_current_players_penguins_can_be_placed(Player playa);
@@ -53,8 +51,6 @@ int can_any_penguins_be_placed(Player* playa);
 Used in the placement phase, checks if any player still can place a penguin
 according to the input penguin number
 */
-
-void print_player_penguins_coordinates(Player playa);
 
 void print_all_players_penguin_coordinates(Player* players);
 #endif

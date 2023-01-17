@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include "command_line.h"
 
 int check_first_parameter(char* argument) {
     if (strcmp(argument, "phase=placement") == 0) {

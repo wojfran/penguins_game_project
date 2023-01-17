@@ -12,11 +12,6 @@ typedef struct Player {
     int score;
     Penguin* pingu;
 } Player;
-/*
- Structure Player holds three integers, players which has information about number of
- players, current_player which is signifying the current player and counter which counts the inability of players to
- make a move, once it is equal to number of all players the game ends.
- */
 
 Player create_player(int penguins, char id[25], int index, int score){
     Player player;

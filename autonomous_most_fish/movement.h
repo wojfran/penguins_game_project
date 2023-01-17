@@ -13,6 +13,8 @@ void automatic_placement_quadrant_method(Player playa, int** board);
 
 void determine_which_quadrants_are_full(int** board, int quadrants[4]);
 
+void automatic_placement_chess_method(Player playa, int** board);
+
 /* Function place_penguin is required to place the penguins on the board. */
 Player place_penguin(Player playa, int** board);
 

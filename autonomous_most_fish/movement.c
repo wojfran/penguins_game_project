@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "movement.h"
 #include "player.h"
 #include "penguins.h"
 #include "input.h"
@@ -115,6 +116,60 @@ void automatic_placement_quadrant_method(Player playa, int** board){
             }
         }
     }
+}
+
+void automatic_placement_chess_method(Player playa, int** board) {
+    x = columns/2;
+    y = rows/2;
+    int dir=1;
+    int n = 1;
+    int check = 0;
+
+    while (board[y-1][x-1] != 10 || n < 3) {
+        if (dir == 1) {
+            for (int i = 0; i < n; i++) {
+                x++;
+                if (board[y-1][x-1] == 10) {
+                    if (check == 1) return;
+                }
+            }
+            dir = 2;
+            continue;
+        } else if (dir == 2) {
+            for (int i = 0; i < n; i++) {
+                y++;
+                if (board[y-1][x-1] == 10) {
+                    if (check == 1) return;
+                }
+            }
+            dir = 3;
+            n++;
+            continue;
+        } else if (dir == 3) {
+            for (int i = 0; i < n; i++) {
+                x--;
+                if (board[y-1][x-1] == 10) {
+                    if (check == 1) return;
+                }
+            }
+            dir = 4;
+            continue;
+        } else if (dir == 4) {
+            for (int i = 0; i < n; i++) {
+                y--;
+                if (board[y-1][x-1] == 10) {
+                    if (check == 1) return;
+                }
+            }
+            dir = 1;
+            n++;
+            continue;
+        }
+        if (n > 2) check = 1;
+    }
+
+    printf("X: %d\nY: %d\n", x, y);
+    printf("Value: %d", board[y-1][x-1]);
 }
 
 Player place_penguin(Player playa, int** board){
@@ -271,7 +326,7 @@ Player move_penguin(int** board, Player playa, int x_penguin, int y_penguin, int
     int penguin_index = (board[y_penguin][x_penguin]/100);
     playa.pingu[penguin_index-1].x=x-1;
     playa.pingu[penguin_index-1].y=y-1;
-    playa.score += board[y-1][x-1];
+    playa.score += board[y-1][x-1]/10;
     board[y-1][x-1] = playa.index;
     board[y_penguin][x_penguin] = 0;
     return playa;
