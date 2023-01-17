@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "command_line.h"
 
@@ -18,7 +19,6 @@ int check_first_parameter(char* argument) {
 
 int read_commandline_penguin_amount(char* penguins) {
     char* token = strtok(penguins, "=");
-    //printf("%s", token);
     if (strcmp(token, "penguins") == 0) {
         token = strtok(NULL, "=");
         int penguins = atoi(token);

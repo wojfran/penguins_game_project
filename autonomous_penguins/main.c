@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "board.h"
-#include "input.h"
 #include "penguins.h"
 #include "player.h"
 #include "movement.h"
@@ -79,7 +78,7 @@ int main(int argc, char* argv[]){
             // generating the board values from the input file
             // as well as checking if they were properly read
             // and no value was outside of the permitted range
-            if(generate_board_file(input, board)) {
+            if(read_board_values_from_file(input, board)) {
                 printf("Such a board was read:\n");
                 display_board_file_format(board, rows, columns);
             } else return 2;
@@ -90,7 +89,7 @@ int main(int argc, char* argv[]){
             // generating players out of file data
             // as well as checking if they are valid
             // ie. if there arent't any duplicates
-            int check = generate_players_from_file(input, players, 10);
+            int check = read_players_from_file(input, players);
             if(check == 1 || mode == 1) {
                 printf("\nThe following players were read from file:\n");
                 for (int i = 0; i < player_number; i++) {
@@ -139,7 +138,6 @@ int main(int argc, char* argv[]){
                 if (check_if_current_players_penguins_can_move(players[current_player], board)){
                     display_board_file_format(board, rows, columns);
                     automatically_pick_movement_coordinates(players[current_player], board);
-                    //printf("xp: %d\nyp: %d\nx: %d\ny: %d\n", x_penguin, y_penguin, x, y);
                     players[current_player] = move_penguin(board, players[current_player], x_penguin, y_penguin, x, y);
                 } else {
                     printf("Our penguins cannot move :(\n");

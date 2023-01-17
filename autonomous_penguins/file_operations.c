@@ -15,7 +15,7 @@ int read_dimensions(FILE* input) {
     } else return 1;
 };
 
-int generate_board_file(FILE* input, int** board) {
+int read_board_values_from_file(FILE* input, int** board) {
     int floe_value;
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++){
@@ -66,7 +66,20 @@ Player read_player(FILE* input) {
     return bob;
 }
 
-int generate_players_from_file(FILE* input, Player* players, int size_of_players) {
+int check_for_duplicate_player(Player bob, Player* players, int players_size) {
+    for (int i = 0; i < players_size; i++) {
+        if (strcmp(bob.id, players[i].id) == 0) {
+            printf("\nYou cannot have two players of the same id name!\n");
+            return 0;
+        } else if (bob.index == players[i].index) {
+            printf("\nYou cannot have two players of the same index!\n");
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int read_players_from_file(FILE* input, Player* players) {
     int i = 0;
     do {
         Player storage = read_player(input);
@@ -95,19 +108,6 @@ int generate_players_from_file(FILE* input, Player* players, int size_of_players
             return 0;
         }
     } while (1);
-}
-
-int check_for_duplicate_player(Player new, Player* players, int players_size) {
-    for (int i = 0; i < players_size; i++) {
-        if (strcmp(new.id, players[i].id) == 0) {
-            printf("\nYou cannot have two players of the same id name!\n");
-            return 0;
-        } else if (new.index == players[i].index) {
-            printf("\nYou cannot have two players of the same index!\n");
-            return 0;
-        }
-    }
-    return 1;
 }
 
 int write_game_state_to_output_file(FILE* output, int** board, Player* players) {
