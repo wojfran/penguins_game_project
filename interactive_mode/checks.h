@@ -61,7 +61,7 @@ If the move is acceptable, the function returns 1, else it prints a warning and 
 int check_if_current_players_penguins_can_be_placed(Player playa);
 /*
 This function checks if the Player structure object playa, given as a parameter, 
-Can place any of its penguins i.e. if any Penguin structure object in its dynamic 
+can place any of its penguins i.e. if any Penguin structure object in its dynamic 
 Penguin array attribute pingu has their attribute called flag set to 1.
 */
 
