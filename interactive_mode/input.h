@@ -73,7 +73,7 @@ phase (in indexing from 1 convention). It uses functions:
     - int check_if_penguin_is_not_flying(int x_penguin, int y_penguin, int x, int y)
 
 to check if the coordinates given as input match the board i.e. are not out of bounds, 
-whether the tile of those coordinates contains any fish i.e. is not empty and is not
+whether  tile of those coordinates contains any fish i.e. is not empty and is not
 occupied by another penguin, as well as if movement of the penguins conforms to the rules
 of the game i.e. if it a one tile movement to the right, left, up or down.
 If the given input does not conform with those bounds an appropriate warning will be 
