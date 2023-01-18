@@ -16,7 +16,7 @@ array of integers (int** board) as its argument and fills it with a random assor
 1, 2 or 3 signifying the amount of fish on the tile.
 */
 
-void display_board();
+void display_board(int** board);
 /*
 This function displays the board by printing each row in one line, when the row ends a newline
 char is printed and a new row begins. It takes an alread allocated 2d dynamic array of integers 

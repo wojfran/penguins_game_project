@@ -96,10 +96,10 @@ to make sure that the penquins are also placed sufficiently far away fro meach o
 block each other off. 
 */
 
-Player place_penguin(Player playa, int** board);
+void place_penguin(Player* playa, int** board);
 /* 
-This function places the penguin of a given player on the board according to the coordinates
-stored in the global int variables x and y. Since those variables store coordinates in the starting
+This function places the penguin of the player pointed by the given Player pointer on the board according to 
+the coordinates stored in the global int variables x and y. Since those variables store coordinates in the starting
 from 1 idnexing convention it has to convert it to the starting from 0 indexing convetion to allow for
 operation on the two dimensional int array storing the board values. It collects the fish from that tile 
 adds it to the players score as well as records the position of the penguin in one of the objects in the players 
@@ -144,12 +144,11 @@ the index of the penguin by 1 and checks again while also incrementing a counter
 variable value reaches the amount of penguins then the loop stops. 
 */
 
-Player move_penguin(int** board, Player playa, int x_penguin, int y_penguin, int x, int y);
-/*
+void move_penguin(int** board, Player* playa, int x_penguin, int y_penguin, int x, int y);
 /* 
 This function moves the penguin located at coordinates denoted by the global int variables x_penguin and y_penguin
-of a given player to the coordinates stored in the global int variables x and y. Since all four of
-those variables store coordinates in the starting from 1 idnexing convention it has to convert it to the starting 
+of the player pointed by the given Player pointer to the coordinates stored in the global int variables x and y. Since 
+all four of those variables store coordinates in the starting from 1 idnexing convention it has to convert it to the starting 
 from 0 indexing convetion to allow for operation on the two dimensional int array storing the board values. It collects 
 the fish from that tile and adds it to the players score as well as records the new position of the penguin in one of 
 the objects in the players dynamic Penguin array attribute, which denotes the penguin that has just been placed. 

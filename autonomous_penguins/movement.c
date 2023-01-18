@@ -297,17 +297,16 @@ void automatic_placement_chess_method(Player playa, int** board) {
     printf("Value: %d", board[y-1][x-1]);
 }
 
-Player place_penguin(Player playa, int** board){
+void place_penguin(Player* playa, int** board){
     for(int i = 0; i < penguins; i++){
-        if (playa.pingu[i].x == -1){
-            playa.score +=board[y-1][x-1]/10;
-            board[y-1][x-1] = playa.index;
-            playa.pingu[i].x = x-1;
-            playa.pingu[i].y = y-1;
+        if (playa->pingu[i].x == -1){
+            playa->score +=board[y-1][x-1]/10;
+            board[y-1][x-1] = playa->index;
+            playa->pingu[i].x = x-1;
+            playa->pingu[i].y = y-1;
             break;
         }
     }
-    return playa;
 }
 
 int determine_best_direction_to_move_penguin_fishwise(int** board, int x_penguin, int y_penguin) {
@@ -444,15 +443,14 @@ void automatically_pick_movement_coordinates(Player playa, int** board){
     return;
 }
 
-Player move_penguin(int** board, Player playa, int x_penguin, int y_penguin, int x, int y){
+void move_penguin(int** board, Player* playa, int x_penguin, int y_penguin, int x, int y){
 
     printf("x_penguin: %d\ny_penguin: %d\nx: %d\ny: %d\n", x_penguin+1, y_penguin+1, x, y);
-    int penguin_index = (board[y_penguin][x_penguin]/100);
-    playa.pingu[penguin_index-1].x=x-1;
-    playa.pingu[penguin_index-1].y=y-1;
-    playa.score += board[y-1][x-1]/10;
-    board[y-1][x-1] = playa.index;
+    int penguin_index = (board[y_penguin][x_penguin]);
+    playa->pingu[penguin_index-1].x=x-1;
+    playa->pingu[penguin_index-1].y=y-1;
+    playa->score += board[y-1][x-1]/10;
+    board[y-1][x-1] = playa->index;
     board[y_penguin][x_penguin] = 0;
-    return playa;
 }
 

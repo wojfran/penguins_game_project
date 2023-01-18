@@ -5,6 +5,7 @@
 #include "penguins.h"
 #include "player.h"
 #include "movement.h"
+#include "checks.h"
 
 
 int x;
@@ -38,26 +39,25 @@ int main(){
             system("clear");
             display_board(board);
             ask_for_coordinates_to_place_penguin(players[current_player-1], board);
-            place_penguin(players[current_player-1], board);
+            place_penguin(&players[current_player-1], board);
         } else {
-            printf("This should never appear if can any penguins be placed works correctly");
+            printf("The board is too small for this amount of penguins :(\n");
         }
         change_current_player();
     }
 
     // moving phase
     while(can_any_penguins_move(players, board)){
-        //system("clear");
         display_board(board);
         ask_for_penguin_coordinates(players[current_player-1], board);
         ask_for_coordinates_to_move_penguin(players[current_player - 1], board);
-        move_penguin(board, players[current_player-1], x_penguin, y_penguin, x, y);
+        move_penguin(board, &players[current_player-1], x_penguin, y_penguin, x, y);
         change_current_player();
     }
-    //move_penguin(board, players[0],0,0,4,4);
 
     display_board(board);
     printf("\nThe game has finished!\n");
+    display_score_of_players(players, player_number);
     deallocate_players(players, player_number);
     free_board_memory(board, columns);
 }

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h> 
 #include "board.h"
 
 int** allocate_memory_for_board(int columns, int rows) {
@@ -10,7 +11,7 @@ int** allocate_memory_for_board(int columns, int rows) {
 
     if (board == NULL) {
         printf("Unable to allocate memory for rows:(\n");
-        return -1;
+        return NULL;
     }
 
     for (int i = 0; i < rows; i++) {
@@ -18,7 +19,7 @@ int** allocate_memory_for_board(int columns, int rows) {
         if (board[i] == NULL) {
             free_board_memory(board, rows);
             printf("Unable to allocate memory for columns:(\n");
-            return -1;
+            return NULL;
         }
     }
     return board;    
