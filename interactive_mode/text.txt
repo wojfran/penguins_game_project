@@ -1,0 +1,205 @@
+Tests for the interactive mode of the game:
+
+1. Upon launching the interactive version of the game we first tried to set the columns of the board to 0, -1 and 100 (not allowed):
+Output:
+
+    Please enter the X dimension of the board, use a integer
+    0
+
+    Wrong dimension silly! It should be an integer greater than 1 and smaller than 99. Please pick again
+
+    Please enter the X dimension of the board, use a integer
+    -1
+
+    Wrong dimension silly! It should be an integer greater than 1 and smaller than 99. Please pick again
+
+    Please enter the X dimension of the board, use a integer
+    100
+
+    Wrong dimension silly! It should be an integer greater than 1 and smaller than 99. Please pick again
+
+    Please enter the X dimension of the board, use a integer
+
+2. Second after setting the columns to a correct value of 10 we did the same test as above with rows:
+Output:
+
+    Please enter the Y dimension of the board, use an integer
+    0
+
+    Wrong dimension silly! It should be an integer greater than 1 and smaller than 99. Please pick again
+
+
+    Please enter the Y dimension of the board, use an integer
+    -1
+
+    Wrong dimension silly! It should be an integer greater than 1 and smaller than 99. Please pick again
+
+
+    Please enter the Y dimension of the board, use an integer
+    100
+
+    Wrong dimension silly! It should be an integer greater than 1 and smaller than 99. Please pick again
+
+
+    Please enter the Y dimension of the board, use an integer
+
+3. After setting the rows to the correct amount (10, but of course it could be anyting between 1-99) we tested
+inputing the wrong amount of players (-1, 0, 9):
+Output:
+
+    Please enter the desired number of players, use a integer
+    -1
+
+    The number you entered is not allowed silly! Please pick something in the range 1-4
+
+    Please enter the desired number of players, use a integer
+    0
+
+    The number you entered is not allowed silly! Please pick something in the range 1-4
+
+    Please enter the desired number of players, use a integer
+    10
+
+    The number you entered is not allowed silly! Please pick something in the range 1-4
+
+    Please enter the desired number of players, use a integer
+
+4. After setting the players to the correct amount we preceeded to do the same tests on penguins input:
+Output:
+
+    Please enter the desired amount of penguins that each player should have, use an integer
+    -1
+
+    The number you entered is not allowed silly! Please pick something in the range 1-4
+
+    Please enter the desired amount of penguins that each player should have, use an integer
+    0
+
+    The number you entered is not allowed silly! Please pick something in the range 1-4
+
+    Please enter the desired amount of penguins that each player should have, use an integer
+    10
+
+    The number you entered is not allowed silly! Please pick something in the range 1-4
+
+    Please enter the desired amount of penguins that each player should have, use an integer
+
+5. After setting the amount of penguins to the correct amount we placed the penguin of player 1 on tile 1,1 and
+then tried to place the penguin of player 2 also on tile 1,1:
+Output:
+
+        1     2     3     4     5     6     7     8     9     10
+        ------------------------------------------------------------
+    1 | 1P1 |  3  |  2  |  2  |  1  |  1  |  1  |  1  |  1  |  3  |
+    2 |  2  |  1  |  3  |  2  |  2  |  3  |  2  |  1  |  1  |  3  |
+    3 |  3  |  3  |  2  |  2  |  3  |  1  |  1  |  3  |  1  |  3  |
+    4 |  2  |  3  |  2  |  3  |  2  |  3  |  3  |  3  |  3  |  1  |
+    5 |  2  |  1  |  1  |  2  |  1  |  2  |  2  |  3  |  3  |  3  |
+    6 |  2  |  3  |  3  |  2  |  1  |  2  |  2  |  1  |  1  |  3  |
+    7 |  1  |  2  |  3  |  3  |  2  |  2  |  3  |  2  |  1  |  3  |
+    8 |  3  |  1  |  2  |  3  |  2  |  2  |  3  |  3  |  2  |  3  |
+    9 |  3  |  2  |  2  |  2  |  3  |  1  |  1  |  2  |  2  |  2  |
+    10 |  2  |  3  |  1  |  2  |  3  |  3  |  3  |  2  |  2  |  3  |
+
+    Where do you wish to place your penguin Player 2? Please enter integer coordinates:
+    Please enter the X dimension of the board, use a integer
+    1
+
+    Please enter the Y dimension of the board, use an integer
+    1
+
+    This ice floe is already occupied by a penguin, you can't move here silly! Please pick again
+
+    Please enter the X dimension of the board, use a integer
+
+5. The next test concerned movement phase, we generated a board 4x4 with 2 players each with 1 penguin,
+and then tested what happens if a penguin wants to move into a penguin, what happens if a penguin wants to 
+walk into an empty tile and move diagonally:
+Output: 
+
+Moving diagonally:
+        1     2  
+        ------------
+    1 | 1P1 | 2P1 |
+    2 |  1  |  1  |
+
+    Which penguin do you wish to move Player 1? Please enter integer coordinates:
+    Please enter the X location of your penguin, use a integer
+    1
+
+    Please enter the Y location of your penguin, use an integer
+    1
+
+    Where do you wish to move your penguin Player 1? Please enter integer coordinates:
+    Please enter the X dimension of the board, use a integer
+    2
+
+    Please enter the Y dimension of the board, use an integer
+    2
+
+    Penguins can't fly silly! Please pick an ice floe to next to your penguin (not diagonal though)
+
+    Please enter the X dimension of the board, use a integer
+
+Moving into another penguin:
+
+        1     2  
+      ------------
+    1 | 1P1 | 2P1 |
+    2 |  1  |  1  |
+
+    Which penguin do you wish to move Player 1? Please enter integer coordinates:
+    Please enter the X location of your penguin, use a integer
+    1
+
+    Please enter the Y location of your penguin, use an integer
+    1
+
+    Where do you wish to move your penguin Player 1? Please enter integer coordinates:
+    Please enter the X dimension of the board, use a integer
+    2
+
+    Please enter the Y dimension of the board, use an integer
+    1
+
+    This ice floe is already occupied by a penguin, you can't move here silly! Please pick again
+
+    Please enter the X dimension of the board, use a integer
+
+Moving into an empty tile:
+
+        1     2
+       ------------
+    1 |     | 2P1 |
+    2 | 1P1 |  1  |
+
+    Which penguin do you wish to move Player 2? Please enter integer coordinates:
+    Please enter the X location of your penguin, use a integer
+    2
+
+    Please enter the Y location of your penguin, use an integer
+    1
+
+    Where do you wish to move your penguin Player 2? Please enter integer coordinates:
+    Please enter the X dimension of the board, use a integer
+    1
+
+    Please enter the Y dimension of the board, use an integer
+    1
+
+    This ice floe doesn't have any fish silly! Please pick again
+
+    Please enter the X dimension of the board, use a integer
+
+6. Testing if the game ends properly:
+Output:
+        1     2
+       ------------
+    1 |     | 2P1 |
+    2 | 1P1 |     |
+
+    The game has finished!
+    -----------Scoreboard-----------
+    The score of the player with index [1] is: 6
+    The score of the player with index [2] is: 2
+
